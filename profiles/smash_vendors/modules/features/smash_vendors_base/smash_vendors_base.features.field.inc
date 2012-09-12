@@ -909,7 +909,7 @@ function smash_vendors_base_field_default_fields() {
       'entity_type' => 'registration',
       'field_name' => 'field_website_blurb',
       'label' => 'Website Blurb',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -918,6 +918,10 @@ function smash_vendors_base_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
+          'maxlength_js' => '200',
+          'maxlength_js_enforce' => 1,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 1,
           'rows' => '5',
         ),
         'type' => 'text_textarea',
