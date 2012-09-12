@@ -78,7 +78,7 @@ function smash_vendors_install() {
   filter_format_save($markdown);
 
   // Enable some standard blocks.
-  $default_theme = variable_get('theme_default', 'smash_joinus');
+  $default_theme = variable_get('theme_default', 'smash_minisite_theme');
   $admin_theme = 'seven';
   $blocks = array(
     array(
@@ -443,9 +443,9 @@ function smash_vendors_install() {
   db_update('system')
     ->fields(array('status' => 1))
     ->condition('type', 'theme')
-    ->condition('name', 'smash_joinus')
+    ->condition('name', 'smash_minisite_theme')
     ->execute();
-  variable_set('theme_default', 'smash_joinus');
+  variable_set('theme_default', 'smash_minisite_theme');
   
-  variable_set('site_name', 'SMASH! 2013 - Join us!');
+  variable_set('site_name', 'SMASH! 2013 - Stallholder Applications');
 }
