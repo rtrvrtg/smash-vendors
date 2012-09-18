@@ -9,6 +9,10 @@
  */
 function smash_vendors_base_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -74,6 +78,14 @@ function smash_vendors_base_default_registration_state() {
  */
 function smash_vendors_base_default_registration_type() {
   $items = array();
+  $items['artist'] = entity_import('registration_type', '{
+    "name" : "artist",
+    "label" : "Artist",
+    "locked" : "0",
+    "weight" : "0",
+    "data" : null,
+    "rdf_mapping" : []
+  }');
   $items['vendor'] = entity_import('registration_type', '{
     "name" : "vendor",
     "label" : "Vendor",

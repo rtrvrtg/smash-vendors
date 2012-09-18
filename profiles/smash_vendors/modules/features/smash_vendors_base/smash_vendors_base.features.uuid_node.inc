@@ -12,6 +12,109 @@ function smash_vendors_base_uuid_features_default_content() {
 
   $nodes[] = array(
   'uid' => '1',
+  'title' => 'Artist',
+  'log' => '',
+  'status' => '1',
+  'comment' => '0',
+  'promote' => '0',
+  'sticky' => '0',
+  'vuuid' => '5a588701-f87e-45fc-b888-b7db1aa6b493',
+  'type' => 'registration_form',
+  'language' => 'und',
+  'created' => '1347890401',
+  'tnid' => '0',
+  'translate' => '0',
+  'uuid' => '54e38ee2-599e-49ed-ae56-ed49e419266a',
+  'revision_uid' => '1',
+  'body' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'Are you a manga-ka, an illustrator or a designer?',
+        'summary' => '',
+        'format' => 'full_html',
+        'safe_value' => 'Are you a manga-ka, an illustrator or a designer?',
+        'safe_summary' => '',
+      ),
+    ),
+  ),
+  'field_registration' => array(
+    'und' => array(
+      0 => array(
+        'registration_type' => 'artist',
+      ),
+    ),
+  ),
+  'field_status' => array(
+    'und' => array(
+      0 => array(
+        'value' => '<div class="warning"><h3>The Artist Circle is Full!</h3><p>But you can still register your details and we\'ll put you on the waiting list. We record your order of registration and if someone pulls out, we contact the next person in the queue.</p></div>',
+        'format' => 'full_html',
+        'safe_value' => '<div class="warning"><h3>The Artist Circle is Full!</h3><p>But you can still register your details and we\'ll put you on the waiting list. We record your order of registration and if someone pulls out, we contact the next person in the queue.</p></div>',
+      ),
+    ),
+  ),
+  'rdf_mapping' => array(
+    'rdftype' => array(
+      0 => 'sioc:Item',
+      1 => 'foaf:Document',
+    ),
+    'title' => array(
+      'predicates' => array(
+        0 => 'dc:title',
+      ),
+    ),
+    'created' => array(
+      'predicates' => array(
+        0 => 'dc:date',
+        1 => 'dc:created',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'changed' => array(
+      'predicates' => array(
+        0 => 'dc:modified',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'body' => array(
+      'predicates' => array(
+        0 => 'content:encoded',
+      ),
+    ),
+    'uid' => array(
+      'predicates' => array(
+        0 => 'sioc:has_creator',
+      ),
+      'type' => 'rel',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'foaf:name',
+      ),
+    ),
+    'comment_count' => array(
+      'predicates' => array(
+        0 => 'sioc:num_replies',
+      ),
+      'datatype' => 'xsd:integer',
+    ),
+    'last_activity' => array(
+      'predicates' => array(
+        0 => 'sioc:last_activity_date',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+  ),
+  'name' => 'admin',
+  'picture' => '0',
+  'data' => 'b:0;',
+  'date' => '2012-09-18 00:00:01 +1000',
+);
+  $nodes[] = array(
+  'uid' => '1',
   'title' => 'Exhibitors',
   'log' => '',
   'status' => '1',
