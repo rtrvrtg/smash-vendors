@@ -57,6 +57,7 @@
 
   .description { /* The descriptive help text (separate from the label) */
     font-size: 0.85em;
+    font-weight: normal;
   }
 
   .form-checkboxes & ,
@@ -67,6 +68,46 @@
   .grippie {
     @include border-radius($radiusBlunt $radiusBlunt $radiusBlunt $radiusBlunt);
     margin: 10px 10px 0 10px;
+  }
+  
+  .tabledrag-toggle-weight-wrapper, table.sticky-header {
+    display: none;
+  }
+  
+  table.field-multiple-table, table.auto-display-table {
+    border-color: transparent;
+    
+    thead, tbody, th {
+      border: 0px none;
+      background: transparent;
+      
+      .description {
+        font-weight: normal;
+      }
+    }
+    
+    th.delta-order {
+      display: none;
+    }
+    
+    tbody {
+      tr, td {
+        border: 0px none;
+        background: transparent;
+        
+        input[type="text"] {
+          margin: 0.5em 0;
+        }
+        
+        &.field-multiple-drag, &.delta-order {
+          display: none;
+        }
+        
+        .form-required {
+          display: none;
+        }
+      }
+    }
   }
 }
 

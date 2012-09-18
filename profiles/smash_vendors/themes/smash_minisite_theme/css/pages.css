@@ -167,8 +167,33 @@ div.messages ul {
   margin-bottom: 0;
 }
 
+div.status, div.warning, div.warning {
+  background: black;
+  color: white;
+  position: relative;
+  padding: 20px 20px 20px 60px;
+  border-radius: 3px;
+  border: 0px none;
+}
+div.status h1:first-child, div.status h2:first-child, div.status h3:first-child, div.warning h1:first-child, div.warning h2:first-child, div.warning h3:first-child, div.warning h1:first-child, div.warning h2:first-child, div.warning h3:first-child {
+  margin-top: 0;
+}
+div.status *:last-child, div.warning *:last-child, div.warning *:last-child {
+  margin-bottom: 0;
+}
+
 div.status {
   /* Normal priority messages */
+}
+div.status:before {
+  display: block;
+  content: " ";
+  background: url(../images/icons.png) no-repeat -48px -48px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
 }
 
 div.warning,
@@ -177,10 +202,32 @@ tr.warning {
   /* border: 1px solid #f0c020; */
   /* Drupal core uses: 1px solid #f0c020 */
 }
+div.warning:before,
+tr.warning:before {
+  display: block;
+  content: " ";
+  background: url(../images/icons.png) no-repeat 0 -48px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
 
 div.error,
 tr.error {
   /* High priority messages. See also the .error declaration below. */
+}
+div.error:before,
+tr.error:before {
+  display: block;
+  content: " ";
+  background: url(../images/icons.png) no-repeat -48px -96px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
 }
 
 .error {
@@ -315,25 +362,35 @@ body.page-select-role .panel-panel {
   }
 }
 
-body.page-position-list .panel-3col-33 {
+body.page-application .panel-2col-stacked {
   /* Overrides for threecol */
 }
-body.page-position-list .panel-3col-33 .panel-panel {
+body.page-application .panel-2col-stacked .panel-panel {
   float: none;
   display: block;
   width: auto;
 }
-body.page-position-list .panel-3col-33 .panel-col .inside,
-body.page-position-list .panel-3col-33 .panel-col-first .inside {
+body.page-application .panel-2col-stacked .panel-col-top .inside {
+  max-width: 480px;
+  margin: 0px auto;
+  text-align: center;
+}
+body.page-application .panel-2col-stacked .panel-col .inside,
+body.page-application .panel-2col-stacked .panel-col-first .inside {
   margin: 0 1em 1em;
 }
-body.page-position-list .panel-3col-33 .panel-col-last .inside {
+body.page-application .panel-2col-stacked .panel-col-last .inside {
   margin: 0 0 1em 1em;
 }
 @media all and (min-width: 800px) {
-  body.page-position-list .panel-3col-33 .panel-panel {
+  body.page-application .panel-2col-stacked .center-wrapper .panel-panel {
     float: left;
+  }
+  body.page-application .panel-2col-stacked .center-wrapper .panel-col-first {
     width: 33%;
+  }
+  body.page-application .panel-2col-stacked .center-wrapper .panel-col-last {
+    width: 66%;
   }
 }
 

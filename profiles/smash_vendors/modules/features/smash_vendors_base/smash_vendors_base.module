@@ -41,10 +41,10 @@ function smash_vendors_base_get_view() {
   $title = NULL;
   $type = NULL;
   if (count($args) > 1) {
-    $title = array_pop($args);
+    $title = array_shift($args);
   }
   if (count($args) > 0) {
-    $type = array_pop($args);
+    $type = array_shift($args);
   }
   
   if ($type == 'ajax') {
@@ -53,7 +53,7 @@ function smash_vendors_base_get_view() {
     $pos_elems = '.ajax-result-pane-form-display > .pane-content > *';
     
     if (!empty($title)) {
-      $commands[] = ajax_command_replace($des_elems, views_embed_view('application_form', 'page', $title));
+      $commands[] = ajax_command_replace($pos_elems, views_embed_view('application_form', 'page', $title));
     }
     else {
       $commands[] = ajax_command_replace($pos_elems, views_embed_view('application_form', 'page'));

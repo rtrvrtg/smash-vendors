@@ -104,21 +104,17 @@
 .form-item table.field-multiple-table {
   border-color: transparent;
 }
-.form-item table.field-multiple-table thead, .form-item table.field-multiple-table tbody, .form-item table.field-multiple-table th {
+.form-item table.field-multiple-table tr, .form-item table.field-multiple-table th, .form-item table.field-multiple-table td {
   border: 0px none;
   background: transparent;
 }
-.form-item table.field-multiple-table tr, .form-item table.field-multiple-table td {
-  border: 0px none;
-  background: transparent;
-}
-.form-item table.field-multiple-table tr input[type="text"], .form-item table.field-multiple-table td input[type="text"] {
+.form-item table.field-multiple-table tr input[type="text"], .form-item table.field-multiple-table th input[type="text"], .form-item table.field-multiple-table td input[type="text"] {
   margin: 0.5em 0;
 }
-.form-item table.field-multiple-table tr.field-multiple-drag, .form-item table.field-multiple-table td.field-multiple-drag {
+.form-item table.field-multiple-table tr.field-multiple-drag, .form-item table.field-multiple-table th.field-multiple-drag, .form-item table.field-multiple-table td.field-multiple-drag {
   display: none;
 }
-.form-item table.field-multiple-table td .form-required {
+.form-item table.field-multiple-table td.form-required {
   display: none;
 }
 

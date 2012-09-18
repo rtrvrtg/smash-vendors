@@ -111,6 +111,17 @@ $font-monospace:   $courier;
   }
 }
 
+@mixin highlight-icon($bgw: 0px, $bgh: 0px) {
+  display: block;
+  content: " ";
+  background: url(../images/icons.png) no-repeat $bgh $bgw;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
 //
 // Colors, etc.
 //

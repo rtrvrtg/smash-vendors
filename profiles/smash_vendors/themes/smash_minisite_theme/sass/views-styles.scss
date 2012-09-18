@@ -81,3 +81,86 @@
     font-weight: bold;
   }
 }
+
+.view-application-form {
+  &.view-display-id-block_1 .view-content {
+    .views-row {
+      margin: 0;
+      padding: 0;
+    }
+    
+    a {
+      text-align: center;
+      margin: 0.5em 0;
+      display: block;
+      @include border-radius($radiusSharp $radiusSharp $radiusSharp $radiusSharp);
+      padding: 15px 20px;
+      margin: 0 0 10px 0;
+      font-weight: bold;
+      color: $colorText;
+      text-decoration: none;
+    }
+    
+    a.active {
+      background-color: $colorHighlightDarkBG;
+    }
+  }
+  
+  &.view-display-id-page {
+    .node header {
+      @include lockwidth;
+      
+      a {
+        pointer-events: none;
+        text-decoration: none;
+      }
+    }
+    
+    form {
+      > .form-wrapper {
+        clear: both;
+      }
+      
+      .field-name-field-table-selection {
+        @include pie-clearfix;
+        
+        > .form-item {
+          > label {
+            display: none;
+          }
+          
+          .form-type-radio {
+            width: 50%;
+            float: left;
+            position: relative;
+            
+            input[type="radio"] {
+              position: absolute;
+              z-index: 1;
+            }
+            
+            label {
+              display: block;
+              @include border-radius($radiusSharp $radiusSharp $radiusSharp $radiusSharp);
+              background-color: black;
+              padding: 0.5em;
+              position: relative;
+              z-index: 10;
+              cursor: pointer;
+              
+              strong, em {
+                display: block;
+                font-size: 1.25em;
+              }
+            }
+            
+            input[type="radio"]:checked + label {
+              background-color: $colorHighlightDarkBG;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
