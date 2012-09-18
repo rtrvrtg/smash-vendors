@@ -20,6 +20,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[field][] = node-registration_form-body
 features[field][] = node-registration_form-field_registration
+features[field][] = node-registration_form-field_status
 features[field][] = registration-vendor-field_abn
 features[field][] = registration-vendor-field_additional_notes
 features[field][] = registration-vendor-field_business_name

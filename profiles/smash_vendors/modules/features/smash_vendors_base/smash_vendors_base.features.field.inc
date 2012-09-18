@@ -47,19 +47,16 @@ function smash_vendors_base_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -78,7 +75,7 @@ function smash_vendors_base_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '1',
       ),
     ),
   );
@@ -121,17 +118,17 @@ function smash_vendors_base_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'registration',
           'settings' => array(),
-          'type' => 'registration_default',
-          'weight' => 1,
+          'type' => 'registration_form',
+          'weight' => '1',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -165,7 +162,78 @@ function smash_vendors_base_field_default_fields() {
         'module' => 'registration',
         'settings' => array(),
         'type' => 'registration_select',
-        'weight' => '-3',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-registration_form-field_status'.
+  $fields['node-registration_form-field_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_status',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'registration_form',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_status',
+      'label' => 'Status',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '2',
       ),
     ),
   );
@@ -934,7 +1002,7 @@ function smash_vendors_base_field_default_fields() {
   $fields['registration-vendor-field_website_url'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '2',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_website_url',
@@ -1024,6 +1092,7 @@ function smash_vendors_base_field_default_fields() {
   t('Passes for Attending Staff');
   t('Postal Address');
   t('Registration');
+  t('Status');
   t('Tell us about yourself and your business! (We put this on our website.)');
   t('Tell us your website so we can link back to you.');
   t('The full name of the exhibitor contact.');

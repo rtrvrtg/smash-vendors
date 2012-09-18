@@ -25,7 +25,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => 'f4efcf59-c77e-4ff4-8fed-71c25e930549',
-  'revision_uid' => '1',
+  'revision_uid' => '0',
   'body' => array(
     'und' => array(
       0 => array(
@@ -44,6 +44,7 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_status' => array(),
   'rdf_mapping' => array(
     'rdftype' => array(
       0 => 'sioc:Item',
