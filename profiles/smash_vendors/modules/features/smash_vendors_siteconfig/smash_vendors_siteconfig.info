@@ -1,0 +1,14 @@
+name = SMASH Vendors Site Config
+description = Vendor site config
+core = 7.x
+package = SMASH!
+version = 7.x-0.1
+project = smash_vendors_siteconfig
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = site_frontpage
+features[variable][] = site_name
+features[variable][] = site_slogan
+features[variable][] = theme_default

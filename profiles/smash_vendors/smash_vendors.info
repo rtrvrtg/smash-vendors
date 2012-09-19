@@ -52,4 +52,6 @@ dependencies[] = views_ui
 
 dependencies[] = smash_vendors_base
 dependencies[] = smash_vendors_export
+dependencies[] = smash_vendors_theme
+dependencies[] = smash_vendors_siteconfig
 
