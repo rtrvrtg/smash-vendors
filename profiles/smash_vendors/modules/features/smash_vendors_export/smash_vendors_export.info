@@ -1,0 +1,11 @@
+name = SMASH Vendors Export
+core = 7.x
+package = SMASH!
+version = 7.x-0.1
+project = smash_vendors_export
+dependencies[] = smash_vendors_base
+dependencies[] = views
+dependencies[] = views_data_export
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = registration_export

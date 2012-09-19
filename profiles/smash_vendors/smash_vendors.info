@@ -51,4 +51,5 @@ dependencies[] = views_content
 dependencies[] = views_ui
 
 dependencies[] = smash_vendors_base
+dependencies[] = smash_vendors_export
 

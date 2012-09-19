@@ -92,7 +92,7 @@ $(document).ready(function(){
       $('#edit-field-other-artist-name').hide();      
     }
   };
-  $('#edit-field-table-selection input[type="radio"]').change(function(){
+  $('#edit-field-table-selection').delegate('input[type="radio"]', 'change', function(){
     checkTableSelection();
   });
   checkTableSelection();
