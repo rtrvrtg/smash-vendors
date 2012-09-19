@@ -88,6 +88,8 @@ function smash_vendors_base_user_default_permissions() {
     'name' => 'create artist registration other anonymous',
     'roles' => array(
       0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
     ),
     'module' => 'registration',
   );
@@ -97,6 +99,7 @@ function smash_vendors_base_user_default_permissions() {
     'name' => 'create artist registration other users',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'registration',
   );
@@ -126,6 +129,8 @@ function smash_vendors_base_user_default_permissions() {
     'name' => 'create vendor registration other anonymous',
     'roles' => array(
       0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
     ),
     'module' => 'registration',
   );
@@ -135,6 +140,7 @@ function smash_vendors_base_user_default_permissions() {
     'name' => 'create vendor registration other users',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'registration',
   );
