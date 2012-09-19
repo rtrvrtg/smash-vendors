@@ -57,9 +57,9 @@ projects[strongarm][version] = "2.0"
 
 projects[unique_field][version] = "1.0-rc1"
 
-projects[uuid][version] = "1.0-alpha3+47-dev"
+projects[uuid][version] = "1.x-dev"
 
-projects[uuid_features][version] = "1.0-alpha1+3-dev"
+projects[uuid_features][version] = "1.x-dev"
 
 projects[views][version] = "3.5"
 
