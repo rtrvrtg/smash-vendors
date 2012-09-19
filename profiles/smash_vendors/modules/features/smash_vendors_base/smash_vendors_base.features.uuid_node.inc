@@ -25,7 +25,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '54e38ee2-599e-49ed-ae56-ed49e419266a',
-  'revision_uid' => '1',
+  'revision_uid' => '0',
   'body' => array(
     'und' => array(
       0 => array(
