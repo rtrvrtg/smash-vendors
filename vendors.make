@@ -3,6 +3,7 @@ core = 7.x
 
 api = 2
 projects[drupal][version] = "7.x"
+projects[drupal][patch][] = http://drupal.org/files/core-js-drupal-log-1232416-100-D7.patch
 
 ; Modules
 ; Please fill the following out. Type may be one of get, git, bzr or svn,
