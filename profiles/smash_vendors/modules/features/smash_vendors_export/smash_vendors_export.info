@@ -1,6 +1,7 @@
 name = SMASH Vendors Export
 core = 7.x
 package = SMASH!
+php = 5.2.4
 version = 7.x-0.1
 project = smash_vendors_export
 dependencies[] = smash_vendors_base

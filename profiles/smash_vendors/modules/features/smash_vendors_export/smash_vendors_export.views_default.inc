@@ -172,7 +172,7 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['path'] = 'application/%.csv';
+  $handler->display->display_options['path'] = 'application-export/%';
   $export['registration_export'] = $view;
 
   return $export;
