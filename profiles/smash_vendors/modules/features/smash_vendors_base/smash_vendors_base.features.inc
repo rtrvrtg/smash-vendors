@@ -42,32 +42,42 @@ function smash_vendors_base_default_registration_state() {
   $items = array();
   $items['canceled'] = entity_import('registration_state', '{
     "name" : "canceled",
-    "label" : "Canceled",
-    "description" : "Registration was cancelled",
+    "label" : "Rejected",
+    "description" : "Registration was rejected or cancelled.",
     "default_state" : "0",
-    "active" : "0",
+    "active" : "1",
     "show_on_form" : "0",
-    "weight" : "1",
+    "weight" : "-12",
     "rdf_mapping" : []
   }');
   $items['complete'] = entity_import('registration_state', '{
     "name" : "complete",
     "label" : "Complete",
     "description" : "Registration has been completed.",
-    "default_state" : "1",
+    "default_state" : "0",
     "active" : "1",
     "show_on_form" : "0",
-    "weight" : "1",
+    "weight" : "-13",
     "rdf_mapping" : []
   }');
   $items['pending'] = entity_import('registration_state', '{
     "name" : "pending",
     "label" : "Pending",
-    "description" : "Registration is pending.",
-    "default_state" : "0",
-    "active" : "0",
+    "description" : "Registration is pending approval.",
+    "default_state" : "1",
+    "active" : "1",
     "show_on_form" : "0",
-    "weight" : "1",
+    "weight" : "-15",
+    "rdf_mapping" : []
+  }');
+  $items['show_on_site'] = entity_import('registration_state', '{
+    "name" : "show_on_site",
+    "label" : "Show on Site",
+    "description" : "Registration is awaiting confirmation but visible on website.",
+    "default_state" : "0",
+    "active" : "1",
+    "show_on_form" : "0",
+    "weight" : "-14",
     "rdf_mapping" : []
   }');
   return $items;
