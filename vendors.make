@@ -2,7 +2,7 @@
 core = 7.x
 
 api = 2
-projects[drupal][version] = "7.x"
+projects[drupal][version] = "7.15"
 projects[drupal][patch][] = http://drupal.org/files/core-js-drupal-log-1232416-100-D7.patch
 
 ; Modules
@@ -22,7 +22,7 @@ projects[email][version] = "1.2"
 
 projects[entity][version] = "1.0-rc3"
 
-projects[entityreference][version] = "1.0-rc3"
+projects[entityreference][version] = "1.0-rc5"
 
 projects[features][version] = "1.0"
 
@@ -41,6 +41,7 @@ projects[maxlength][version] = "3.0-beta1"
 projects[panels][version] = "3.3"
 
 projects[registration][version] = "1.0-beta3"
+projects[registration][patch][] = "http://drupal.org/files/registration-state_label_and_filter_handler-1701966-12.patch"
 
 projects[rules][version] = "2.2"
 
