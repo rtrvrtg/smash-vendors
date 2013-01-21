@@ -46,7 +46,7 @@ function smash_vendors_base_default_registration_state() {
     "description" : "Registration was rejected or cancelled.",
     "default_state" : "0",
     "active" : "1",
-    "show_on_form" : "0",
+    "show_on_form" : "1",
     "weight" : "-12",
     "rdf_mapping" : []
   }');
@@ -56,7 +56,7 @@ function smash_vendors_base_default_registration_state() {
     "description" : "Registration has been completed.",
     "default_state" : "0",
     "active" : "1",
-    "show_on_form" : "0",
+    "show_on_form" : "1",
     "weight" : "-13",
     "rdf_mapping" : []
   }');
@@ -66,7 +66,7 @@ function smash_vendors_base_default_registration_state() {
     "description" : "Registration is pending approval.",
     "default_state" : "1",
     "active" : "1",
-    "show_on_form" : "0",
+    "show_on_form" : "1",
     "weight" : "-15",
     "rdf_mapping" : []
   }');
@@ -76,7 +76,7 @@ function smash_vendors_base_default_registration_state() {
     "description" : "Registration is awaiting confirmation but visible on website.",
     "default_state" : "0",
     "active" : "1",
-    "show_on_form" : "0",
+    "show_on_form" : "1",
     "weight" : "-14",
     "rdf_mapping" : []
   }');

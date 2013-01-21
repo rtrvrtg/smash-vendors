@@ -58,6 +58,7 @@ function smash_vendors_base_get_view() {
     else {
       $commands[] = ajax_command_replace($pos_elems, views_embed_view('application_form', 'page'));
     }
+    $commands[] = ajax_command_invoke(NULL, 'smashThemeFormInit');
 
     $page = array('#type' => 'ajax', '#commands' => $commands);
     ajax_deliver($page);
@@ -84,6 +85,10 @@ function smash_vendors_base_form_registration_form_alter(&$form, &$form_state, $
   
   $form['actions']['submit']['#value'] = t('Register');
   unset($form['actions']['cancel']);
+  
+  if (user_is_anonymous()) {
+    $form['state']['#type'] = 'value';
+  }
   
   $form['#submit'][] = 'smash_vendors_base_registration_form_postsubmit';
 }
