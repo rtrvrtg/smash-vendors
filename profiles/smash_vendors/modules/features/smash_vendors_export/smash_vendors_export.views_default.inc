@@ -39,27 +39,37 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['relationships']['field_website_banner_image_fid']['id'] = 'field_website_banner_image_fid';
   $handler->display->display_options['relationships']['field_website_banner_image_fid']['table'] = 'field_data_field_website_banner_image';
   $handler->display->display_options['relationships']['field_website_banner_image_fid']['field'] = 'field_website_banner_image_fid';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'registration_related_node';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Registration: Registration ID */
   $handler->display->display_options['fields']['registration_id']['id'] = 'registration_id';
   $handler->display->display_options['fields']['registration_id']['table'] = 'registration';
   $handler->display->display_options['fields']['registration_id']['field'] = 'registration_id';
-  /* Field: Registration: Type */
+  /* Field: Registration: Registration type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'registration';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Field: Registration: State */
+  $handler->display->display_options['fields']['type']['label'] = 'Type';
+  /* Field: Registration: State entity */
   $handler->display->display_options['fields']['state']['id'] = 'state';
   $handler->display->display_options['fields']['state']['table'] = 'registration';
   $handler->display->display_options['fields']['state']['field'] = 'state';
-  /* Field: Registration: Created */
+  $handler->display->display_options['fields']['state']['label'] = 'State';
+  /* Field: Registration: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'registration';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created';
   $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Field: Registration: Anon_mail */
+  /* Field: Registration: Anonymous e-mail */
   $handler->display->display_options['fields']['anon_mail']['id'] = 'anon_mail';
   $handler->display->display_options['fields']['anon_mail']['table'] = 'registration';
   $handler->display->display_options['fields']['anon_mail']['field'] = 'anon_mail';
+  $handler->display->display_options['fields']['anon_mail']['label'] = 'Email';
   /* Field: Registration: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'views_entity_registration';
@@ -152,19 +162,6 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['fields']['uri']['relationship'] = 'field_website_banner_image_fid';
   $handler->display->display_options['fields']['uri']['label'] = 'Website Banner Image';
   $handler->display->display_options['fields']['uri']['file_download_path'] = TRUE;
-  /* Contextual filter: Content: Title */
-  $handler->display->display_options['arguments']['title']['id'] = 'title';
-  $handler->display->display_options['arguments']['title']['table'] = 'node';
-  $handler->display->display_options['arguments']['title']['field'] = 'title';
-  $handler->display->display_options['arguments']['title']['relationship'] = 'registration_related_node';
-  $handler->display->display_options['arguments']['title']['default_action'] = 'access denied';
-  $handler->display->display_options['arguments']['title']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['title']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['title']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['title']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['title']['limit'] = '0';
-  $handler->display->display_options['arguments']['title']['path_case'] = 'lower';
-  $handler->display->display_options['arguments']['title']['transform_dash'] = TRUE;
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
@@ -172,7 +169,7 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['path'] = 'application-export/%';
+  $handler->display->display_options['path'] = 'application-export.csv';
   $export['registration_export'] = $view;
 
   return $export;
