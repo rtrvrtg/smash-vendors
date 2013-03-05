@@ -19,6 +19,13 @@ function smash_vendors_base_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function smash_vendors_base_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function smash_vendors_base_node_info() {

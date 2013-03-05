@@ -52,12 +52,17 @@ function smash_vendors_base_get_view() {
     
     $pos_elems = '.ajax-result-pane-form-display > .pane-content > *';
     
+    $page = '';
     if (!empty($title)) {
-      $commands[] = ajax_command_replace($pos_elems, views_embed_view('application_form', 'page', $title));
+      $page = views_embed_view('application_form', 'page', $title);
     }
     else {
-      $commands[] = ajax_command_replace($pos_elems, views_embed_view('application_form', 'page'));
+      $page = views_embed_view('application_form', 'page');
     }
+    
+    $page = str_replace('/request/application/' . $title . '/ajax', '/application/' . $title, $page);
+    
+    $commands[] = ajax_command_replace($pos_elems, $page);
     $commands[] = ajax_command_invoke(NULL, 'smashThemeFormInit');
 
     $page = array('#type' => 'ajax', '#commands' => $commands);
