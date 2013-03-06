@@ -9,6 +9,7 @@ set :deploy_to,   "/var/www/staging.smash.org.au/vendors"
 set :url,         "http://vendors.staging.smash.org.au"
 set :shared_path, "#{deploy_to}/shared"
 set :db_name,     "vendors_staging"
+set :install_profile, "smash_vendors"
 set :use_sudo, false
 
 set :stages, %w(production staging)
@@ -122,6 +123,7 @@ namespace :drush do
       db_switch = "--db-url=#{db_url}"
       db_su = "--db-su=#{db_user} --db-su-pw=#{db_pass}"
       
+      drush_do("site-install #{install_profile} #{db_switch} #{db_su} #{account_setup} -y")
     end
   end
   
