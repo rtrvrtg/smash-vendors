@@ -6,8 +6,13 @@ set :application, "SMASH! Vendors"
 set :domain,      "linode.smash.org.au"
 set :repository,  "git@github.com:smashcon/smash-vendors-drupal.git"
 set :deploy_to,   "/var/www/staging.smash.org.au/vendors"
+set :url,         "http://vendors.staging.smash.org.au"
 set :shared_path, "#{deploy_to}/shared"
 set :use_sudo, false
+
+set :stages, %w(production staging)
+set :default_stage, "staging"
+require 'capistrano/ext/multistage'
  
 set :scm,        :git
 set :branch,     'master'
