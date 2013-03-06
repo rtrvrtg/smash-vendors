@@ -1,0 +1,11 @@
+<?php
+
+function smash_invoice_linker_install() {
+  variable_set('smash_invoice_linker_endpoint', '');
+  variable_set('smash_invoice_linker_apikey', '');
+}
+
+function smash_invoice_linker_uninstall() {
+  variable_del('smash_invoice_linker_endpoint');
+  variable_del('smash_invoice_linker_apikey');
+}

@@ -1,0 +1,172 @@
+<?php
+
+function smash_invoice_linker_entity_view($entity, $type, $view_mode, $langmode) {
+  if ($type == 'registration') {
+    // dpm($view_mode);
+    
+    /*
+    $node = node_load($entity->entity_id);
+    
+    $mail = $entity->anon_mail;
+    $author_uid = $entity->author_uid;
+    if (!empty($author_uid)) {
+      $user = user_load($author_uid);
+      $mail = $user->mail;
+    }
+    */
+    
+    $endpoint = variable_get('smash_invoice_linker_endpoint', '');
+    $api_key = variable_get('smash_invoice_linker_apikey', '');
+    
+    $invoice_id = filter_xss($entity->field_invoice_id[LANGUAGE_NONE][0]['value']);
+    
+    $link = l(
+      $invoice_id, 
+      'http://' . $endpoint . '/invoice/' . $invoice_id,
+      array(
+        'query' => array('key' => $api_key), 
+        'attributes' => array('target' => '_blank')
+      )
+    );
+    
+    $json_link = l(
+      'JSON', 
+      'http://' . $endpoint . '/invoice/' . $invoice_id,
+      array(
+        'query' => array('format' => 'json', 'key' => $api_key), 
+        'attributes' => array('target' => '_blank')
+      )
+    );
+    
+    $entity->content['field_invoice_id'] = array(
+      '#theme'  => 'field',
+      '#title'  => t('SMASH! Invoice ID'),
+      '#formatter' => 'text_default',
+      '#weight' => -99,
+      '#label_display' => 'above',
+      '#field_name' => 'field_invoice_id',
+      '#field_type' => 'text',
+      '#language' => LANGUAGE_NONE,
+      '#entity_type' => 'registration',
+      '#bundle' => $entity->type,
+      '#items' => $entity->field_invoice_id[LANGUAGE_NONE],
+      '0' => array('#markup' => $link . ' | ' . $json_link),
+    );
+    
+    // dpm($entity);
+  }
+}
+
+/**
+ * Fetch invoice info and save to entity
+ */
+function smash_invoice_linker_create($registration) {
+  module_load_include('inc', 'registration', 'includes/registration.entity');
+  
+  // Dirty fucking hack to get around entity wrappers!
+  
+  $id = $registration->registration_id->value();
+  $reg = registration_load($id);
+  
+  $node = node_load($reg->entity_id);
+  $mail = $registration->anon_mail;
+  $author_uid = $registration->author_uid;
+  if (!empty($author_uid)) {
+    $user = user_load($author_uid);
+    $mail = $user->mail;
+  }
+  
+  $app_stub = $node->field_invoice_prefix[LANGUAGE_NONE][0]['value'];
+  $purpose = implode(' - ', array(
+    $node->title,
+    $mail,
+    date('Y-m-d')
+  ));
+  
+  $invoice = smash_invoice_linker_make_invoice($app_stub, $purpose);
+  
+  watchdog('smash_invoice_linker', 'Invoice <pre>'.print_r($invoice, 1).'</pre>');
+  
+  if (is_null($invoice) || empty($invoice->number)) return;
+  
+  $reg->field_invoice_id[LANGUAGE_NONE] = array(array('value' => $invoice->number));
+  $reg->save();
+}
+
+/**
+ * Make invoice HTTP request
+ */
+function smash_invoice_linker_make_invoice($app_stub, $purpose = '') {
+  if (empty($app_stub)) return NULL;
+  
+  $endpoint = variable_get('smash_invoice_linker_endpoint', '');
+  if (empty($endpoint)) {
+    watchdog('smash_invoice_linker', t('Tried to set up invoice but failed: endpoint not set.'));
+    return NULL;
+  }
+  
+  $api_key = variable_get('smash_invoice_linker_apikey', '');
+  if (empty($api_key)) {
+    watchdog('smash_invoice_linker', t('Tried to set up invoice but failed: API key not set.'));
+    return NULL;
+  }
+  
+  $params = array(
+    'app_stub'  => strtoupper($app_stub),
+    'purpose'   => $purpose,
+    'key'       => $api_key,
+  );
+  
+  $result = _smash_invoice_linker_httpreq($endpoint, 80, 'POST', '/invoice/new.json', $params);
+  
+  watchdog('smash_invoice_linker', 'result <pre>'.print_r($result, 1).'</pre>');
+  
+  if ($result) {
+    return json_decode($result);
+  }
+  return NULL;
+}
+
+/**
+ * Send HTTP request
+ */
+function _smash_invoice_linker_httpreq($host, $port = 80, $method = 'GET', $path = '/', $params = array()) {
+  if (is_array($params)) {
+    $param_str = http_build_query($params);
+  }
+  elseif (is_string($params)) {
+    $param_str = $params . '';
+  }
+  
+  error_log($host . ',' . $port . ',' . $method . ',' . $path . ',' . $param_str);
+  
+  $method = strtoupper($method);
+
+  // Create the connection
+  $sock = fsockopen($host, $port);
+  if ($method == "GET") {
+    $path .= "?" . $param_str;
+  }
+  
+  fputs($sock, "$method $path HTTP/1.1\r\n");
+  fputs($sock, "Host: $host\r\n");
+  fputs($sock, "Content-type: application/x-www-form-urlencoded\r\n");
+  
+  if ($method == "POST") {
+    fputs($sock, "Content-length: " . strlen($param_str) . "\r\n");
+  }
+  
+  fputs($sock, "Connection: close\r\n\r\n");
+  
+  if ($method == "POST") {
+    fputs($sock, $param_str);
+  }
+  
+  $result = array();
+  while (!feof($sock)) {
+    array_push($result, fgets($sock, 1024));
+  }
+  fclose($sock);
+  
+  return $result[count($result) - 1];
+}

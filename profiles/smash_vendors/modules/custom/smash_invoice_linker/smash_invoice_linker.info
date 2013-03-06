@@ -1,0 +1,9 @@
+name = SMASH Invoice Linker
+description = Obtains invoice ID where appropriate
+core = 7.x
+package = SMASH!
+php = 5.3
+version = 7.x-0.1
+project = smash_invoice_linker
+
+dependencies[] = rules
