@@ -8,6 +8,7 @@ set :repository,  "git@github.com:rtrvrtg/smash-vendors.git"
 set :deploy_to,   "/var/www/staging.smash.org.au/vendors"
 set :url,         "http://vendors.staging.smash.org.au"
 set :shared_path, "#{deploy_to}/shared"
+set :db_name,     "vendors_staging"
 set :use_sudo, false
 
 set :stages, %w(production staging)
@@ -39,23 +40,41 @@ def app_exists?(app_name)
   end
 end
 
-def set_ownership(full_path)
+def drush_do(task)
+  run "drush #{task} --root=#{current_release} -l #{url}"
+end
+
+def set_ownership(full_path, is_file = false, failure_ok = false)
+  suffix = failure_ok == true ? '; true' : ''
   if !remote_file_exists? full_path
     run "#{try_sudo} mkdir #{full_path}"
   end
-  run "#{try_sudo} chown smash:www-data #{full_path}"
+  if is_file
+    run "#{try_sudo} chown smash:www-data #{full_path} #{suffix}"
+  else
+    run "#{try_sudo} chown -R smash:www-data #{full_path} #{suffix}"
+  end
   set_chmod(full_path)
 end
 
-def set_chmod(full_path, perm = "2775")
-  run "#{try_sudo} chmod #{perm} #{full_path}"
+def symlink_me(full_path, short_path)
+  run "cd #{current_release} && #{try_sudo} ln -s #{full_path} #{short_path}"
+end
+
+def set_chmod(full_path, perm = "2775", failure_ok = false)
+  suffix = failure_ok == true ? '; true' : ''
+  run "#{try_sudo} chmod #{perm} #{full_path} #{suffix}"
 end
 
 def is_drupal_installed?
-  data = capture("drush status --root=#{current_release}").strip
-  db_ok = /Database\s*:\s*([^\s]+)/.match(data)
-  d7_ok = /Drupal bootstrap\s*:\s*([^\s]+)/.match(data)
-  db_ok[1] == 'Connected' and d7_ok[1] == 'Successful'
+  begin
+    data = capture("drush status --root=#{current_release}").strip
+    db_ok = /Database\s*:\s*([^\s]+)/.match(data)
+    d7_ok = /Drupal bootstrap\s*:\s*([^\s]+)/.match(data)
+    (!db_ok.nil? && !d7_ok?) && (db_ok[1] == 'Connected' and d7_ok[1] == 'Successful')
+  rescue
+    true
+  end
 end
 
 namespace :deploy do
@@ -64,9 +83,17 @@ namespace :deploy do
   task :restart do ; end
   
   desc "Flush the Drupal cache system."
-  task :cacheclear, :roles => :web do
-    run "drush cc all --root=#{current_release}"
+  task :cacheclear, :roles => :web, :on_error => :continue do
+    drush_do("cc all")
   end
+end
+
+task :uname do
+  run "uname -a"
+end
+
+task :pwd do
+  run "echo #{deploy_to}"
 end
 
 namespace :drush do
@@ -78,24 +105,28 @@ namespace :drush do
   
   # Installs site
   task :install_site, :roles => :web do
+    run "cd #{current_release} && git submodule update --init"
+    run "mkdir #{current_release}/cache"
+    set_ownership("#{current_release}/cache");
+    set_chmod("#{current_release}/cache");
+    
     if !is_drupal_installed?
       set(:db_user, Capistrano::CLI.ui.ask("DB User: ") )
       set(:db_pass, Capistrano::CLI.password_prompt("DB Pass: ") )
       set(:account_name, Capistrano::CLI.ui.ask("Account name: ") )
       set(:account_mail, Capistrano::CLI.ui.ask("Account email: ") )
       
-      db_url = "mysql://#{db_user}:#{db_pass}@localhost/vendors_staging"
+      db_url = "mysql://#{db_user}:#{db_pass}@localhost/#{db_name}"
       
       account_setup = "--account-name=#{account_name} --account-mail=#{account_mail} --site-mail=#{account_mail}"
       db_switch = "--db-url=#{db_url}"
       db_su = "--db-su=#{db_user} --db-su-pw=#{db_pass}"
       
-      run "drush site-install smash_vendors --root=#{current_release} #{db_switch} #{db_su} #{account_setup} -y"
     end
   end
   
   # Append caching stuff
-  task :setup_filecache, :roles => :web do
+  task :setup_filecache, :roles => :web, :on_error => :continue do
     cache_cfg = <<END
 $conf['cache_backends'] = array('sites/all/modules/filecache/filecache.inc');
 $conf['cache_default_class'] = 'DrupalFileCache';
@@ -104,7 +135,7 @@ END
 
     settings_path = "#{shared_path}/sites-default/settings.php"
     if is_drupal_installed? and !remote_file_exists?(settings_path)
-      set_chmod("#{shared_path}/sites-default", "2775")
+      set_chmod("#{shared_path}/sites-default", "2775", true)
       set_chmod(settings_path, "644")
       File.open(settings_path, 'a+') do |f|
         current = File.read(f)
@@ -113,23 +144,32 @@ END
         end
       end
       set_chmod(settings_path, "444")
-      set_chmod("#{shared_path}/sites-default", "2555")
+    end
+  end
+  
+  # Cleanup install
+  task :cleanup_install, :roles => :web, :on_error => :continue do
+    if is_drupal_installed?
+      # Clean up PLUpload http://drupal.org/node/1189632
+      run "rm -rf #{current_release}/sites/all/libraries/plupload/examples"
     end
   end
   
   # Append caching stuff
   task :setup_files, :roles => :web do
     if is_drupal_installed?
-      set_ownership "#{shared_path}/sites-default/private"
-      set_ownership "#{shared_path}/sites-default/files"
+      set_ownership("#{shared_path}/sites-default/private", true, true)
+      set_ownership("#{shared_path}/sites-default/files", true, true)
     end
   end
   
   # Run drush updates
   task :run_updates, :roles => :web do
     if is_drupal_installed?
-      run "drush -y features-revert-all --root=#{current_release}"
-      run "drush -y updb --root=#{current_release}"
+      drush_do("registry-rebuild -y")
+      drush_do("features-revert-all -y")
+      drush_do("updb -y")
+      drush_do("cron -y")
     end
   end
   
@@ -159,15 +199,6 @@ namespace :drupal do
   end
 end
 
-namespace :compass do
-  # Build a fresh copy of theme stylesheets if compass is installed
-  task :make_styles, :roles => :web do
-    if app_exists? 'compass'
-      run "cd #{current_release}/profiles/smash_vendors/themes/smash_minisite_theme && compass compile"
-    end
-  end
-end
-
 
 
 # Run during setup
@@ -178,10 +209,10 @@ after "deploy:cold", "drush:install_site"
 after "deploy:finalize_update", "drush:run_makefile"
 after "deploy:finalize_update", "drupal:create_symlinks"
 after "deploy:finalize_update", "drush:install_site"
+after "deploy:finalize_update", "drush:cleanup_install"
 after "deploy:finalize_update", "drush:run_updates"
 after "deploy:finalize_update", "drush:setup_files"
 after "deploy:finalize_update", "drush:setup_filecache"
-after "deploy:finalize_update", "compass:make_styles"
 
 # Cap the number of checked-out revisions.
 after "deploy", "deploy:cacheclear"
