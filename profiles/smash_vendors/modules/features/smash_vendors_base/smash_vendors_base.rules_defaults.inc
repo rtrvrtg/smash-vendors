@@ -17,5 +17,21 @@ function smash_vendors_base_default_rules_configuration() {
       "DO" : [ { "smash_invoice_linker_create" : { "message" : [ "registration" ] } } ]
     }
   }');
+  $items['rules_new_vendor_application'] = entity_import('rules_config', '{ "rules_new_vendor_application" : {
+      "LABEL" : "New Vendor Application",
+      "PLUGIN" : "reaction rule",
+      "REQUIRES" : [ "rules", "registration" ],
+      "ON" : [ "registration_insert" ],
+      "DO" : [
+        { "mail" : {
+            "to" : "management@smash.org.au",
+            "subject" : "New Vendor Application for [registration:entity]",
+            "message" : "A new vendor has applied using email address [registration:anon-mail]\\r\\nTheir application ID is [registration:registration-id]\\r\\n\\r\\nView their application at [registration:url]",
+            "language" : [ "" ]
+          }
+        }
+      ]
+    }
+  }');
   return $items;
 }
