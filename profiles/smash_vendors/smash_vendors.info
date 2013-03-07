@@ -1,57 +1,235 @@
-name = SMASH! 2013 - Stallholder Applications
-description = Custom installation profile for SMASH! Vendors site
-version = 7.x-0.1
-core = 7.x
+; Packaging information for smash_vendors
+name = "SMASH Vendors"
+description = "VENDORS! YAY!"
+exclusive = "1"
+core = "7.x"
+; ----------
+; Dependencies
+; ----------
+; Chaos tool suite
+dependencies[] = ctools
+dependencies[] = ctools_custom_content
+dependencies[] = page_manager
+dependencies[] = views_content
+; Core
 dependencies[] = block
 dependencies[] = contextual
 dependencies[] = dashboard
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = filter
 dependencies[] = help
 dependencies[] = image
 dependencies[] = list
 dependencies[] = menu
+dependencies[] = node
 dependencies[] = number
 dependencies[] = options
 dependencies[] = path
-dependencies[] = taxonomy
-dependencies[] = dblog
-dependencies[] = shortcut
-dependencies[] = toolbar
-dependencies[] = overlay
-dependencies[] = field_ui
-dependencies[] = file
 dependencies[] = rdf
-
-dependencies[] = openid
-
-dependencies[] = ctools
-dependencies[] = ctools_custom_content
-dependencies[] = page_manager
+dependencies[] = shortcut
+dependencies[] = system
+dependencies[] = taxonomy
+dependencies[] = text
+dependencies[] = toolbar
+dependencies[] = update
+dependencies[] = user
+; Fields
+dependencies[] = bundle_copy
 dependencies[] = email
-dependencies[] = entity
 dependencies[] = entityreference
-dependencies[] = features
+dependencies[] = field_hidden
 dependencies[] = field_validation
 dependencies[] = field_validation_ui
-dependencies[] = property_validation
-dependencies[] = compass
-dependencies[] = stringoverrides
-dependencies[] = strongarm
-dependencies[] = jquery_update
-dependencies[] = filecache
 dependencies[] = link
+dependencies[] = maxlength
+dependencies[] = property_validation
+; Input filters
 dependencies[] = markdown
+; Other
+dependencies[] = compass
+dependencies[] = entity
+dependencies[] = entity_token
+dependencies[] = stringoverrides
+dependencies[] = stringoverrides_migrate
+dependencies[] = strongarm
+dependencies[] = unique_field
+; Panels
 dependencies[] = panels
+; Performance and scalability
+dependencies[] = filecache
+; Registration
 dependencies[] = registration
 dependencies[] = registration_views
+; Rules
 dependencies[] = rules
 dependencies[] = rules_admin
-dependencies[] = unique_field
-dependencies[] = views
-dependencies[] = views_content
-dependencies[] = views_ui
-
+; SMASH!
+dependencies[] = smash_invoice_linker
 dependencies[] = smash_vendors_base
 dependencies[] = smash_vendors_export
-dependencies[] = smash_vendors_theme
 dependencies[] = smash_vendors_siteconfig
+dependencies[] = smash_vendors_theme
+; UUID
+dependencies[] = uuid
+; Views
+dependencies[] = views
+dependencies[] = views_data_export
+dependencies[] = views_json
+dependencies[] = views_ui
+; Features
+dependencies[] = features
+dependencies[] = uuid_features
+
+; ----------
+; Variables
+; ----------
+variables[additional_settings__active_tab_registration_form] = 'edit-unique-field'
+variables[admin_theme] = 'seven'
+variables[date_default_timezone] = 'Australia/ACT'
+variables[default_nodes_main] = '10'
+variables[entityreference:base-tables][node][0] = 'node'
+variables[entityreference:base-tables][node][1] = 'nid'
+variables[entityreference:base-tables][registration][0] = 'registration'
+variables[entityreference:base-tables][registration][1] = 'registration_id'
+variables[entityreference:base-tables][registration_type][0] = 'registration_type'
+variables[entityreference:base-tables][registration_type][1] = 'id'
+variables[entityreference:base-tables][registration_state][0] = 'registration_state'
+variables[entityreference:base-tables][registration_state][1] = 'registration_state_id'
+variables[entityreference:base-tables][file][0] = 'file_managed'
+variables[entityreference:base-tables][file][1] = 'fid'
+variables[entityreference:base-tables][taxonomy_term][0] = 'taxonomy_term_data'
+variables[entityreference:base-tables][taxonomy_term][1] = 'tid'
+variables[entityreference:base-tables][taxonomy_vocabulary][0] = 'taxonomy_vocabulary'
+variables[entityreference:base-tables][taxonomy_vocabulary][1] = 'vid'
+variables[entityreference:base-tables][user][0] = 'users'
+variables[entityreference:base-tables][user][1] = 'uid'
+variables[entityreference:base-tables][rules_config][0] = 'rules_config'
+variables[entityreference:base-tables][rules_config][1] = 'id'
+variables[field_bundle_settings_node__registration_form][view_modes][teaser][custom_settings] = true
+variables[field_bundle_settings_node__registration_form][view_modes][full][custom_settings] = false
+variables[field_bundle_settings_node__registration_form][view_modes][rss][custom_settings] = false
+variables[field_bundle_settings_node__registration_form][extra_fields][form][title][weight] = '0'
+variables[field_bundle_settings_registration__artist][view_modes][full][custom_settings] = false
+variables[field_bundle_settings_registration__artist][extra_fields][form][anon_mail][weight] = '5'
+variables[field_bundle_settings_registration__artist][extra_fields][display][mail][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][host_entity_link][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][created][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][updated][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][slots][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][author][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][user][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__artist][extra_fields][display][state][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][view_modes][full][custom_settings] = false
+variables[field_bundle_settings_registration__vendor][extra_fields][form][anon_mail][weight] = '7'
+variables[field_bundle_settings_registration__vendor][extra_fields][display][mail][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][host_entity_link][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][created][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][updated][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][slots][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][author][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][user][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[field_bundle_settings_registration__vendor][extra_fields][display][state][default] = array (
+  'weight' => '0',
+  'visible' => true,
+)
+variables[filter_fallback_format] = 'plain_text'
+variables[locale_custom_strings_en][][%mail is already registered for this event.] = '%mail has already applied.'
+variables[locale_custom_strings_en][][%user is already registered for this event.] = '%user has already applied.'
+variables[locale_custom_strings_en][][You are already registered for this event.] = 'You have already applied.'
+variables[locale_custom_strings_en][][Sorry, there are insufficient slots remaining for this event.] = 'Sorry, there are insufficient slots remaining for this application.'
+variables[menu_options_registration_form][0] = 'main-menu'
+variables[menu_parent_registration_form] = 'main-menu:0'
+variables[node_admin_theme] = '1'
+variables[node_options_page][0] = 'status'
+variables[node_options_registration_form][0] = 'status'
+variables[node_preview_registration_form] = '1'
+variables[rules_empty_sets][registration_update] = 0
+variables[rules_empty_sets][registration_presave] = 1
+variables[rules_empty_sets][registration_delete] = 2
+variables[rules_empty_sets][registration_view] = 3
+variables[rules_empty_sets][node_insert] = 4
+variables[rules_empty_sets][node_update] = 5
+variables[rules_empty_sets][node_presave] = 6
+variables[rules_empty_sets][node_view] = 7
+variables[rules_empty_sets][node_delete] = 8
+variables[rules_empty_sets][init] = 9
+variables[rules_empty_sets][cron] = 10
+variables[rules_empty_sets][watchdog] = 11
+variables[rules_empty_sets][user_insert] = 12
+variables[rules_empty_sets][user_update] = 13
+variables[rules_empty_sets][user_presave] = 14
+variables[rules_empty_sets][user_view] = 15
+variables[rules_empty_sets][user_delete] = 16
+variables[rules_empty_sets][user_login] = 17
+variables[rules_empty_sets][user_logout] = 18
+variables[rules_empty_sets][taxonomy_term_insert] = 19
+variables[rules_empty_sets][taxonomy_term_update] = 20
+variables[rules_empty_sets][taxonomy_term_presave] = 21
+variables[rules_empty_sets][taxonomy_term_delete] = 22
+variables[rules_empty_sets][taxonomy_vocabulary_insert] = 23
+variables[rules_empty_sets][taxonomy_vocabulary_update] = 24
+variables[rules_empty_sets][taxonomy_vocabulary_presave] = 25
+variables[rules_empty_sets][taxonomy_vocabulary_delete] = 26
+variables[save_continue_registration_form] = 'Save and add fields'
+variables[site_frontpage] = 'application'
+variables[smash_invoice_linker_apikey] = 'a8262433f792e320304cb2250db4fa44fa54cf47'
+variables[smash_invoice_linker_endpoint] = 'vast-gorge-1486.herokuapp.com'
+variables[theme_default] = 'smash_minisite_theme'
+variables[unique_field_comp_registration_form] = 'each'
+variables[unique_field_scope_registration_form] = 'type'
+variables[update_last_email_notification] = 1362574087
+variables[user_pictures] = '1'
+variables[user_picture_dimensions] = '1024x1024'
+variables[user_picture_file_size] = '800'
+variables[user_picture_style] = 'thumbnail'
+variables[user_register] = 2
 
