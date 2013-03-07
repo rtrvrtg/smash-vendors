@@ -24,7 +24,7 @@ function smash_vendors_base_default_rules_configuration() {
       "ON" : [ "registration_insert" ],
       "DO" : [
         { "mail" : {
-            "to" : "management@smash.org.au",
+            "to" : "exhibitors@smash.org.au",
             "subject" : "New Vendor Application for [registration:entity]",
             "message" : "A new vendor has applied using email address [registration:anon-mail]\\r\\nTheir application ID is [registration:registration-id]\\r\\n\\r\\nView their application at [registration:url]",
             "language" : [ "" ]
