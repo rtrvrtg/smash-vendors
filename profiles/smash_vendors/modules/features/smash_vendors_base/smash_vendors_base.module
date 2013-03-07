@@ -82,11 +82,13 @@ function smash_vendors_base_get_view() {
  * Alter rego form
  */
 function smash_vendors_base_form_registration_form_alter(&$form, &$form_state, $form_id) {
-  if (count($form['who_is_registering']['#options']) == 1) {
-    $keys = array_keys($form['who_is_registering']['#options']);
-    $form['who_is_registering']['#type']  = 'value';
-    $form['who_is_registering']['#value'] = $keys[0];
-  }
+  $form['who_is_registering']['#type']  = 'value';
+  $form['who_is_registering']['#value'] = 'registration_registrant_type_anon';
+  $form['user']['#type'] = 'value';  
+  
+  $form['anon_mail']['#required'] = TRUE;
+  $form['anon_mail']['#title'] = t('Contact Email');
+  $form['anon_mail']['#description'] = t('An email address that we can also reach you on.');
   
   $form['actions']['submit']['#value'] = t('Register');
   unset($form['actions']['cancel']);
@@ -96,6 +98,8 @@ function smash_vendors_base_form_registration_form_alter(&$form, &$form_state, $
   }
   
   $form['#submit'][] = 'smash_vendors_base_registration_form_postsubmit';
+  
+  // dpm($form);
 }
 
 function smash_vendors_base_registration_form_postsubmit($form, &$form_state) {
