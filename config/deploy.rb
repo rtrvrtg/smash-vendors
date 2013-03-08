@@ -5,10 +5,7 @@ set :user,        "smash"
 set :application, "SMASH! Vendors"
 set :domain,      "linode.smash.org.au"
 set :repository,  "git@github.com:rtrvrtg/smash-vendors.git"
-set :deploy_to,   "/var/www/staging.smash.org.au/vendors"
-set :url,         "http://vendors.staging.smash.org.au"
 set :shared_path, "#{deploy_to}/shared"
-set :db_name,     "vendors_staging"
 set :install_profile, "smash_vendors"
 set :use_sudo, false
 
