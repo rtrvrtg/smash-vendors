@@ -49,6 +49,7 @@ projects[compass][subdir] = "contrib"
 
 projects[entity][version] = "1.0"
 projects[entity][subdir] = "contrib"
+projects[entity][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 projects[stringoverrides][version] = "1.8"
 projects[stringoverrides][subdir] = "contrib"
