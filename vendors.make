@@ -3,6 +3,7 @@ core = "7.21"
 api = "2"
 ; comment this out in to use on drupal.org
 projects[drupal][version] = "7.21"
+projects[drupal][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 ; Modules
 projects[ctools][version] = "1.2"
@@ -49,7 +50,6 @@ projects[compass][subdir] = "contrib"
 
 projects[entity][version] = "1.0"
 projects[entity][subdir] = "contrib"
-projects[entity][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 projects[stringoverrides][version] = "1.8"
 projects[stringoverrides][subdir] = "contrib"
