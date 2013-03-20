@@ -70,11 +70,13 @@ function smash_invoice_linker_create($registration) {
   
   $node = node_load($reg->entity_id);
   $mail = $registration->anon_mail;
+  /*
   $author_uid = $registration->author_uid;
   if (!empty($author_uid)) {
     $user = user_load($author_uid);
     $mail = $user->mail;
   }
+  */
   
   $app_stub = $node->field_invoice_prefix[LANGUAGE_NONE][0]['value'];
   $purpose = implode(' - ', array(
