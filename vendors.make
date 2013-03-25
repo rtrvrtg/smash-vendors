@@ -75,7 +75,7 @@ projects[rules][subdir] = "contrib"
 projects[uuid][version] = "1.x-dev"
 projects[uuid][subdir] = "contrib"
 
-projects[views][version] = "3.5"
+projects[views][version] = "3.6"
 projects[views][subdir] = "contrib"
 
 projects[views_data_export][version] = "3.0-beta6"

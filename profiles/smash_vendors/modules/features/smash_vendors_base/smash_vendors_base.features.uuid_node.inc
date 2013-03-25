@@ -14,7 +14,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'uid' => '1',
   'title' => 'Artist',
   'log' => '',
-  'status' => '1',
+  'status' => '0',
   'comment' => '0',
   'promote' => '0',
   'sticky' => '0',
@@ -118,7 +118,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'uid' => '1',
   'title' => 'Community Group',
   'log' => '',
-  'status' => '1',
+  'status' => '0',
   'comment' => '0',
   'promote' => '0',
   'sticky' => '0',
@@ -133,10 +133,10 @@ function smash_vendors_base_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Or are you a community group, a club, a not-for-profit association, or similar?',
+        'value' => 'Are you a community group, a club, a not-for-profit association, or similar?',
         'summary' => '',
         'format' => 'full_html',
-        'safe_value' => 'Or are you a community group, a club, a not-for-profit association, or similar?',
+        'safe_value' => 'Are you a community group, a club, a not-for-profit association, or similar?',
         'safe_summary' => '',
       ),
     ),
@@ -237,10 +237,10 @@ function smash_vendors_base_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Or are you a seller of DVDs, merchandise, books, video games or clothing?',
+        'value' => 'Are you a seller of DVDs, merchandise, books, video games or clothing?',
         'summary' => '',
         'format' => 'full_html',
-        'safe_value' => 'Or are you a seller of DVDs, merchandise, books, video games or clothing?',
+        'safe_value' => 'Are you a seller of DVDs, merchandise, books, video games or clothing?',
         'safe_summary' => '',
       ),
     ),
