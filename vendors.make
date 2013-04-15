@@ -1,12 +1,12 @@
 ; SMASH Vendors make file
-core = "7.21"
+core = "7.22"
 api = "2"
 ; comment this out in to use on drupal.org
-projects[drupal][version] = "7.21"
+projects[drupal][version] = "7.22"
 projects[drupal][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 ; Modules
-projects[ctools][version] = "1.2"
+projects[ctools][version] = "1.3"
 projects[ctools][subdir] = "contrib"
 
 projects[devel][version] = "1.3"
@@ -69,13 +69,13 @@ projects[filecache][subdir] = "contrib"
 projects[registration][version] = "1.1"
 projects[registration][subdir] = "contrib"
 
-projects[rules][version] = "2.2"
+projects[rules][version] = "2.3"
 projects[rules][subdir] = "contrib"
 
 projects[uuid][version] = "1.x-dev"
 projects[uuid][subdir] = "contrib"
 
-projects[views][version] = "3.6"
+projects[views][version] = "3.7"
 projects[views][subdir] = "contrib"
 
 projects[views_data_export][version] = "3.0-beta6"
@@ -84,6 +84,8 @@ projects[views_data_export][subdir] = "contrib"
 projects[views_datasource][version] = "1.x-dev"
 projects[views_datasource][subdir] = "contrib"
 
+projects[scheduler][version] = "1.0"
+projects[scheduler][subdir] = "contrib"
 
 ; Themes
 ; zen
