@@ -832,8 +832,8 @@ function smash_vendors_base_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'full_table' => '<strong>Full Table</strong> <em>$120 (incl. GST)</em> A full table for an artist group/team (incl. two tickets for attending artists)',
-          'half_table' => '<strong>Half Table</strong> <em>$60 (incl. GST)</em> A half table for one artist (including one ticket for the attending artist)',
+          'full_table' => '<strong>Full Table</strong> <em>$150 (incl. GST)</em> A full table for an artist group/team (incl. two tickets for attending artists)',
+          'half_table' => '<strong>Half Table</strong> <em>$75 (incl. GST)</em> A half table for one artist (including one ticket for the attending artist)',
         ),
         'allowed_values_function' => '',
       ),
