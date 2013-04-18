@@ -910,7 +910,7 @@ function smash_vendors_base_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'artist',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Upload your group\'s banner image, if you have one. If you don\'t have one right now, or are unable to upload one right now, email it to <a href="mailto:vendors@smash.org.au">vendors@smash.org.au</a>.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -926,7 +926,7 @@ function smash_vendors_base_field_default_fields() {
       'entity_type' => 'registration',
       'field_name' => 'field_website_banner_image',
       'label' => 'Website Banner Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
@@ -1955,6 +1955,7 @@ function smash_vendors_base_field_default_fields() {
   t('The name that will be put on the website and displayed on signage.');
   t('This is your Australian Business Number.');
   t('Trading Name');
+  t('Upload your group\'s banner image, if you have one. If you don\'t have one right now, or are unable to upload one right now, email it to <a href="mailto:vendors@smash.org.au">vendors@smash.org.au</a>.');
   t('We put this up on our website.');
   t('Website Banner Image');
   t('Website Blurb');

@@ -16,7 +16,10 @@ function smash_vendors_base_default_page_manager_pages() {
   $page->admin_title = 'Application Form';
   $page->admin_description = '';
   $page->path = 'application/!form';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'form' => array(
