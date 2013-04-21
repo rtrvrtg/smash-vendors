@@ -14,7 +14,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'uid' => '1',
   'title' => 'Artist',
   'log' => '',
-  'status' => '0',
+  'status' => '1',
   'comment' => '0',
   'promote' => '0',
   'sticky' => '0',
@@ -25,7 +25,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '54e38ee2-599e-49ed-ae56-ed49e419266a',
-  'revision_uid' => '1',
+  'revision_uid' => '0',
   'body' => array(
     'und' => array(
       0 => array(
@@ -109,12 +109,12 @@ function smash_vendors_base_uuid_features_default_content() {
       'callback' => 'date_iso8601',
     ),
   ),
-  'publish_on' => '1366511400',
+  'publish_on' => '0',
   'unpublish_on' => '1376089200',
   'scheduler' => array(
-    'published' => 'Sunday, April 21, 2013 - 12:30',
+    'published' => NULL,
     'unpublished' => 'Saturday, August 10, 2013 - 09:00',
-    'publish_on' => '1366511400',
+    'publish_on' => '0',
     'unpublish_on' => '1376089200',
   ),
   'name' => 'admin',
