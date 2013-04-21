@@ -844,7 +844,7 @@ function smash_vendors_base_field_default_fields() {
       'bundle' => 'artist',
       'default_value' => array(
         0 => array(
-          'value' => 'full_table',
+          'value' => 'half_table',
         ),
       ),
       'deleted' => '0',
@@ -872,7 +872,7 @@ function smash_vendors_base_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_buttons',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );
