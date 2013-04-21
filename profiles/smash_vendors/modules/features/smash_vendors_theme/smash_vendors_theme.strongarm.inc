@@ -25,9 +25,9 @@ function smash_vendors_theme_strongarm() {
     '' => array(
       '%mail is already registered for this event.' => '%mail has already applied.',
       '%user is already registered for this event.' => '%user has already applied.',
+      'Registration has been saved.' => 'Thanks for registering for SMASH! 2013. An invoice will be sent to your email address once we have confirmed your application.',
       'Sorry, there are insufficient slots remaining for this event.' => 'Sorry, there are insufficient slots remaining for this application.',
       'You are already registered for this event.' => 'You have already applied.',
-      'Registration has been saved.' => 'Thanks for registering for SMASH! 2013. An invoice will be sent to your email address once we have prepared it.',
     ),
   );
   $export['locale_custom_strings_en'] = $strongarm;
