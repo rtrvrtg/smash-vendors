@@ -1,57 +1,67 @@
 <?php
 
+function smash_invoice_linker_menu() {
+  $items['regenerate-registration-invoice/%'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'Regenerate registration invoice',
+    'page callback' => 'smash_invoice_linker_regen_invoice',
+    'page arguments' => array(1),
+    'access arguments' => array('administer site'),
+  );
+
+  return $items;
+}
+
 function smash_invoice_linker_entity_view($entity, $type, $view_mode, $langmode) {
   if ($type == 'registration') {
-    // dpm($view_mode);
-    
-    /*
-    $node = node_load($entity->entity_id);
-    
-    $mail = $entity->anon_mail;
-    $author_uid = $entity->author_uid;
-    if (!empty($author_uid)) {
-      $user = user_load($author_uid);
-      $mail = $user->mail;
+    if (isset($entity->field_invoice_id[LANGUAGE_NONE])) {
+      $endpoint = variable_get('smash_invoice_linker_endpoint', '');
+      $api_key = variable_get('smash_invoice_linker_apikey', '');
+      
+      $invoice_id = filter_xss($entity->field_invoice_id[LANGUAGE_NONE][0]['value']);
+      
+      $link = l(
+        $invoice_id, 
+        'http://' . $endpoint . '/invoice/' . $invoice_id,
+        array(
+          'query' => array('key' => $api_key), 
+          'attributes' => array('target' => '_blank')
+        )
+      );
+      
+      $json_link = l(
+        'JSON', 
+        'http://' . $endpoint . '/invoice/' . $invoice_id,
+        array(
+          'query' => array('format' => 'json', 'key' => $api_key), 
+          'attributes' => array('target' => '_blank')
+        )
+      );
+      
+      $entity->content['field_invoice_id'] = array(
+        '#theme'  => 'field',
+        '#title'  => t('SMASH! Invoice ID'),
+        '#formatter' => 'text_default',
+        '#weight' => -99,
+        '#label_display' => 'above',
+        '#field_name' => 'field_invoice_id',
+        '#field_type' => 'text',
+        '#language' => LANGUAGE_NONE,
+        '#entity_type' => 'registration',
+        '#bundle' => $entity->type,
+        '#items' => $entity->field_invoice_id[LANGUAGE_NONE],
+        '0' => array('#markup' => $link . ' | ' . $json_link),
+      );
+
     }
-    */
-    
-    $endpoint = variable_get('smash_invoice_linker_endpoint', '');
-    $api_key = variable_get('smash_invoice_linker_apikey', '');
-    
-    $invoice_id = filter_xss($entity->field_invoice_id[LANGUAGE_NONE][0]['value']);
-    
-    $link = l(
-      $invoice_id, 
-      'http://' . $endpoint . '/invoice/' . $invoice_id,
-      array(
-        'query' => array('key' => $api_key), 
-        'attributes' => array('target' => '_blank')
-      )
-    );
-    
-    $json_link = l(
-      'JSON', 
-      'http://' . $endpoint . '/invoice/' . $invoice_id,
-      array(
-        'query' => array('format' => 'json', 'key' => $api_key), 
-        'attributes' => array('target' => '_blank')
-      )
-    );
-    
-    $entity->content['field_invoice_id'] = array(
-      '#theme'  => 'field',
-      '#title'  => t('SMASH! Invoice ID'),
-      '#formatter' => 'text_default',
-      '#weight' => -99,
-      '#label_display' => 'above',
-      '#field_name' => 'field_invoice_id',
-      '#field_type' => 'text',
-      '#language' => LANGUAGE_NONE,
-      '#entity_type' => 'registration',
-      '#bundle' => $entity->type,
-      '#items' => $entity->field_invoice_id[LANGUAGE_NONE],
-      '0' => array('#markup' => $link . ' | ' . $json_link),
-    );
+    else {
+      $regen_link = l(
+        'No invoice ID currently available. Click here to generate one.', 
+        'regenerate-registration-invoice/' . $entity->registration_id
+      );
+
+      drupal_set_message($regen_link, 'error');
+    }
     
     // dpm($entity);
   }
@@ -69,14 +79,7 @@ function smash_invoice_linker_create($registration) {
   $reg = registration_load($id);
   
   $node = node_load($reg->entity_id);
-  $mail = $registration->anon_mail;
-  /*
-  $author_uid = $registration->author_uid;
-  if (!empty($author_uid)) {
-    $user = user_load($author_uid);
-    $mail = $user->mail;
-  }
-  */
+  $mail = isset($reg->anon_mail) ? $reg->anon_mail : 'Reg ID #' . $id;
   
   $app_stub = $node->field_invoice_prefix[LANGUAGE_NONE][0]['value'];
   $purpose = implode(' - ', array(
@@ -93,6 +96,45 @@ function smash_invoice_linker_create($registration) {
   
   $reg->field_invoice_id[LANGUAGE_NONE] = array(array('value' => $invoice->number));
   $reg->save();
+}
+
+function smash_invoice_linker_regen_invoice($registration_id) {
+  module_load_include('inc', 'registration', 'includes/registration.entity');
+
+  $reg = registration_load($registration_id);
+
+  if (!empty($reg->field_invoice_id)) {
+    drupal_set_message('Invoice already exists for this invoice.');
+    drupal_goto('registration/' . $registration_id);
+    drupal_exit();
+  }
+
+  $node = node_load($reg->entity_id);
+  $mail = isset($reg->anon_mail) ? $reg->anon_mail : 'Reg ID #' . $id;
+  
+  $app_stub = $node->field_invoice_prefix[LANGUAGE_NONE][0]['value'];
+  $purpose = implode(' - ', array(
+    $node->title,
+    $mail,
+    date('Y-m-d')
+  ));
+  
+  $invoice = smash_invoice_linker_make_invoice($app_stub, $purpose);
+  
+  watchdog('smash_invoice_linker', 'Invoice <pre>'.print_r($invoice, 1).'</pre>');
+  
+  if (is_null($invoice) || empty($invoice->number)) {
+    drupal_set_message(t('Something went wrong while generating an invoice ID for this registration. Contact IT and let them know what you were trying to do.'), 'error');
+    drupal_goto('registration/' . $registration_id);
+    drupal_exit();
+  }
+  
+  $reg->field_invoice_id[LANGUAGE_NONE] = array(array('value' => $invoice->number));
+  $reg->save();
+
+  drupal_set_message(t('Generated invoice ID !iid', array('!iid' => $invoice->number)));
+
+  drupal_goto('registration/' . $registration_id);
 }
 
 /**
