@@ -91,10 +91,11 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['fields']['field_table_name']['id'] = 'field_table_name';
   $handler->display->display_options['fields']['field_table_name']['table'] = 'field_data_field_table_name';
   $handler->display->display_options['fields']['field_table_name']['field'] = 'field_table_name';
-  /* Field: Registration: Artist Name */
+  /* Field: Registration: Community Group Name */
   $handler->display->display_options['fields']['field_artist_name']['id'] = 'field_artist_name';
   $handler->display->display_options['fields']['field_artist_name']['table'] = 'field_data_field_artist_name';
   $handler->display->display_options['fields']['field_artist_name']['field'] = 'field_artist_name';
+  $handler->display->display_options['fields']['field_artist_name']['label'] = 'Artist Name';
   /* Field: Registration: Other Artist Name */
   $handler->display->display_options['fields']['field_other_artist_name']['id'] = 'field_other_artist_name';
   $handler->display->display_options['fields']['field_other_artist_name']['table'] = 'field_data_field_other_artist_name';
@@ -119,10 +120,11 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['fields']['field_intended_activities']['id'] = 'field_intended_activities';
   $handler->display->display_options['fields']['field_intended_activities']['table'] = 'field_data_field_intended_activities';
   $handler->display->display_options['fields']['field_intended_activities']['field'] = 'field_intended_activities';
-  /* Field: Registration: Artist Blurb */
+  /* Field: Registration: Community Group Description */
   $handler->display->display_options['fields']['field_artist_blurb']['id'] = 'field_artist_blurb';
   $handler->display->display_options['fields']['field_artist_blurb']['table'] = 'field_data_field_artist_blurb';
   $handler->display->display_options['fields']['field_artist_blurb']['field'] = 'field_artist_blurb';
+  $handler->display->display_options['fields']['field_artist_blurb']['label'] = 'Artist Blurb';
   /* Field: Registration: Table Selection */
   $handler->display->display_options['fields']['field_table_selection']['id'] = 'field_table_selection';
   $handler->display->display_options['fields']['field_table_selection']['table'] = 'field_data_field_table_selection';

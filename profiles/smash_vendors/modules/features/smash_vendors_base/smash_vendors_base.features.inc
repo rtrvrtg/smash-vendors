@@ -103,6 +103,14 @@ function smash_vendors_base_default_registration_type() {
     "data" : null,
     "rdf_mapping" : []
   }');
+  $items['community_groups'] = entity_import('registration_type', '{
+    "name" : "community_groups",
+    "label" : "Community Groups",
+    "locked" : "0",
+    "weight" : "0",
+    "data" : null,
+    "rdf_mapping" : []
+  }');
   $items['vendor'] = entity_import('registration_type', '{
     "name" : "vendor",
     "label" : "Vendor",

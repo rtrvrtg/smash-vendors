@@ -187,14 +187,16 @@ function smash_vendors_base_views_default_views() {
   $handler->display->display_options['fields']['anon_mail']['table'] = 'registration';
   $handler->display->display_options['fields']['anon_mail']['field'] = 'anon_mail';
   $handler->display->display_options['fields']['anon_mail']['label'] = 'Anon_mail';
-  /* Field: Registration: Artist Blurb */
+  /* Field: Registration: Community Group Description */
   $handler->display->display_options['fields']['field_artist_blurb']['id'] = 'field_artist_blurb';
   $handler->display->display_options['fields']['field_artist_blurb']['table'] = 'field_data_field_artist_blurb';
   $handler->display->display_options['fields']['field_artist_blurb']['field'] = 'field_artist_blurb';
-  /* Field: Registration: Artist Name */
+  $handler->display->display_options['fields']['field_artist_blurb']['label'] = 'Artist Blurb';
+  /* Field: Registration: Community Group Name */
   $handler->display->display_options['fields']['field_artist_name']['id'] = 'field_artist_name';
   $handler->display->display_options['fields']['field_artist_name']['table'] = 'field_data_field_artist_name';
   $handler->display->display_options['fields']['field_artist_name']['field'] = 'field_artist_name';
+  $handler->display->display_options['fields']['field_artist_name']['label'] = 'Artist Name';
   /* Field: Registration: Author entity author_uid */
   $handler->display->display_options['fields']['author']['id'] = 'author';
   $handler->display->display_options['fields']['author']['table'] = 'registration';

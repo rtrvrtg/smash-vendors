@@ -25,7 +25,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '54e38ee2-599e-49ed-ae56-ed49e419266a',
-  'revision_uid' => '0',
+  'revision_uid' => '1',
   'body' => array(
     'und' => array(
       0 => array(
@@ -44,7 +44,15 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
-  'field_status' => array(),
+  'field_status' => array(
+    'und' => array(
+      0 => array(
+        'value' => '<div class="warning"><h2>Signups are full!</h2><p>Further signups will be added to a waiting list.</p></div>',
+        'format' => 'full_html',
+        'safe_value' => '<div class="warning"><h2>Signups are full!</h2><p>Further signups will be added to a waiting list.</p></div>',
+      ),
+    ),
+  ),
   'field_invoice_prefix' => array(
     'und' => array(
       0 => array(
@@ -126,7 +134,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'uid' => '1',
   'title' => 'Community Group',
   'log' => '',
-  'status' => '0',
+  'status' => '1',
   'comment' => '0',
   'promote' => '0',
   'sticky' => '0',
@@ -152,7 +160,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'field_registration' => array(
     'und' => array(
       0 => array(
-        'registration_type' => 'artist',
+        'registration_type' => 'community_groups',
       ),
     ),
   ),
