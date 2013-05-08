@@ -1552,7 +1552,7 @@ function smash_vendors_base_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'full_table' => '<strong>Full Table</strong> <em>$29 (incl. GST)</em> A full table for a club/community group (incl. two tickets for attending members)',
+          'full_table' => '<strong>Full Table</strong> <em>$150 (incl. GST)</em> A full table for a club/community group (incl. two passes for attending members)',
         ),
         'allowed_values_function' => '',
       ),
