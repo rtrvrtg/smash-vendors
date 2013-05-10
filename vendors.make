@@ -87,6 +87,9 @@ projects[views_datasource][subdir] = "contrib"
 projects[scheduler][version] = "1.0"
 projects[scheduler][subdir] = "contrib"
 
+projects[logintoboggan][version] = "1.3"
+projects[logintoboggan][subdir] = "contrib"
+
 ; Themes
 ; zen
 projects[zen][type] = "theme"
