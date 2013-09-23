@@ -1,8 +1,8 @@
 ; SMASH Vendors make file
-core = "7.22"
+core = "7.23"
 api = "2"
 ; comment this out in to use on drupal.org
-projects[drupal][version] = "7.22"
+projects[drupal][version] = "7.23"
 projects[drupal][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 ; Modules
@@ -30,7 +30,7 @@ projects[email][subdir] = "contrib"
 projects[entityreference][version] = "1.0"
 projects[entityreference][subdir] = "contrib"
 
-projects[field_hidden][version] = "1.3"
+projects[field_hidden][version] = "1.4"
 projects[field_hidden][subdir] = "contrib"
 
 projects[field_validation][version] = "2.3"
@@ -42,13 +42,13 @@ projects[link][subdir] = "contrib"
 projects[maxlength][version] = "3.0-beta1"
 projects[maxlength][subdir] = "contrib"
 
-projects[markdown][version] = "1.1"
+projects[markdown][version] = "1.2"
 projects[markdown][subdir] = "contrib"
 
 projects[compass][version] = "1.0-beta1"
 projects[compass][subdir] = "contrib"
 
-projects[entity][version] = "1.0"
+projects[entity][version] = "1.2"
 projects[entity][subdir] = "contrib"
 
 projects[stringoverrides][version] = "1.8"
@@ -66,13 +66,13 @@ projects[panels][subdir] = "contrib"
 projects[filecache][version] = "1.0-beta2"
 projects[filecache][subdir] = "contrib"
 
-projects[registration][version] = "1.1"
+projects[registration][version] = "1.2"
 projects[registration][subdir] = "contrib"
 
-projects[rules][version] = "2.3"
+projects[rules][version] = "2.4"
 projects[rules][subdir] = "contrib"
 
-projects[uuid][version] = "1.x-dev"
+projects[uuid][version] = "1.0-alpha5"
 projects[uuid][subdir] = "contrib"
 
 projects[views][version] = "3.7"
@@ -93,5 +93,5 @@ projects[logintoboggan][subdir] = "contrib"
 ; Themes
 ; zen
 projects[zen][type] = "theme"
-projects[zen][version] = "5.1"
+projects[zen][version] = "5.4"
 projects[zen][subdir] = "contrib"
