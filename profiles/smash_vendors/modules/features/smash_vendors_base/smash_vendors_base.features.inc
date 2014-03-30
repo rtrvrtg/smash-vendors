@@ -111,6 +111,14 @@ function smash_vendors_base_default_registration_type() {
     "data" : null,
     "rdf_mapping" : []
   }');
+  $items['exhibitor_food_'] = entity_import('registration_type', '{
+    "name" : "exhibitor_food_",
+    "label" : "Exhibitor (Food)",
+    "locked" : "0",
+    "weight" : "0",
+    "data" : null,
+    "rdf_mapping" : []
+  }');
   $items['vendor'] = entity_import('registration_type', '{
     "name" : "vendor",
     "label" : "Exhibitor",
