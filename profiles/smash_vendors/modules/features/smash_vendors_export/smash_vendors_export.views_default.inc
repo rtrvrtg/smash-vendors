@@ -138,11 +138,10 @@ function smash_vendors_export_views_default_views() {
   $handler->display->display_options['fields']['field_additional_artists_helpers']['table'] = 'field_data_field_additional_artists_helpers';
   $handler->display->display_options['fields']['field_additional_artists_helpers']['field'] = 'field_additional_artists_helpers';
   $handler->display->display_options['fields']['field_additional_artists_helpers']['delta_offset'] = '0';
-  /* Field: Registration: Passes for Attending Staff */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_staff_names']['id'] = 'field_staff_names';
   $handler->display->display_options['fields']['field_staff_names']['table'] = 'field_data_field_staff_names';
   $handler->display->display_options['fields']['field_staff_names']['field'] = 'field_staff_names';
-  $handler->display->display_options['fields']['field_staff_names']['delta_offset'] = '0';
   /* Field: Registration: Additional Notes */
   $handler->display->display_options['fields']['field_additional_notes']['id'] = 'field_additional_notes';
   $handler->display->display_options['fields']['field_additional_notes']['table'] = 'field_data_field_additional_notes';
