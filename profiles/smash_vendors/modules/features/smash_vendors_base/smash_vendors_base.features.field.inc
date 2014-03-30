@@ -471,7 +471,7 @@ function smash_vendors_base_field_default_fields() {
       'bundle' => 'artist',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please enter your full name, this must be the same as the one that appears on your ID that must be presented to pick up your passes.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -483,7 +483,7 @@ function smash_vendors_base_field_default_fields() {
       ),
       'entity_type' => 'registration',
       'field_name' => 'field_artist_name',
-      'label' => 'Artist Name',
+      'label' => 'Artist Full Name',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -1809,7 +1809,7 @@ function smash_vendors_base_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -1870,7 +1870,69 @@ function smash_vendors_base_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '13',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-vendor-field_booths'.
+  $fields['registration-vendor-field_booths'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_booths',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'decimal_separator' => '.',
+        'precision' => '10',
+        'scale' => '0',
+      ),
+      'translatable' => '0',
+      'type' => 'number_decimal',
+    ),
+    'field_instance' => array(
+      'bundle' => 'vendor',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Please enter the number of booth spaces you require.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 2,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_decimal',
+          'weight' => 15,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_booths',
+      'label' => 'Booths',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'number',
+        'weight' => '9',
       ),
     ),
   );
@@ -1933,7 +1995,76 @@ function smash_vendors_base_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-vendor-field_certificate_of_currency'.
+  $fields['registration-vendor-field_certificate_of_currency'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_certificate_of_currency',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 1,
+        'display_field' => 1,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'vendor',
+      'deleted' => '0',
+      'description' => 'Please upload your Certificate of Currency. If you do not have this at the moment, you <strong>must apply</strong> and submit one later.
+For more information, please see the following website <a href="http://www.workcover.nsw.gov.au/insurancepremiums/Policies/Takingoutapolicy/Pages/Certificateofcurrency.aspx">NSW Goverment WorkCover site</a> ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 14,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_certificate_of_currency',
+      'label' => 'Certificate of Currency',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'txt pdf doc docx jpg jpeg gif bmp',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '15',
       ),
     ),
   );
@@ -1996,7 +2127,7 @@ function smash_vendors_base_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -2059,7 +2190,7 @@ function smash_vendors_base_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -2119,7 +2250,71 @@ function smash_vendors_base_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-vendor-field_forklift'.
+  $fields['registration-vendor-field_forklift'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_forklift',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'vendor',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Will you require the use of a forklift for your goods? (Note: Forklift will incur a cost of $50 fee for usage. Please advise your courier to provide a truck if a Tailgate otherwise)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 18,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_forklift',
+      'label' => 'Forklift',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_onoff',
+        'weight' => '16',
       ),
     ),
   );
@@ -2180,7 +2375,7 @@ function smash_vendors_base_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '4',
+        'weight' => '8',
       ),
     ),
   );
@@ -2231,7 +2426,7 @@ function smash_vendors_base_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'field_hidden',
-        'weight' => '14',
+        'weight' => '19',
       ),
     ),
   );
@@ -2292,19 +2487,83 @@ function smash_vendors_base_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
 
-  // Exported field: 'registration-vendor-field_staff_names'.
-  $fields['registration-vendor-field_staff_names'] = array(
+  // Exported field: 'registration-vendor-field_sponsorship'.
+  $fields['registration-vendor-field_sponsorship'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '8',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_staff_names',
+      'field_name' => 'field_sponsorship',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'vendor',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Would you be interested in receiving information about sponsorship options?',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 16,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_sponsorship',
+      'label' => 'Sponsorship',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_onoff',
+        'weight' => '17',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-vendor-field_staff_passes'.
+  $fields['registration-vendor-field_staff_passes'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_staff_passes',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -2320,30 +2579,28 @@ function smash_vendors_base_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
+      'settings' => array(),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'vendor',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'All exhibitors will be provided at least three exhibitor passes; to the best of your knowledge please indicate the names of those staff attending.',
+      'description' => 'All exhibitors will be provided at least three exhibitor passes; to the best of your knowledge please indicate the full names of those staff attending.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => 17,
         ),
       ),
       'entity_type' => 'registration',
-      'field_name' => 'field_staff_names',
+      'field_name' => 'field_staff_passes',
       'label' => 'Passes for Attending Staff',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -2352,10 +2609,78 @@ function smash_vendors_base_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
+          'rows' => '5',
         ),
-        'type' => 'text_textfield',
-        'weight' => '9',
+        'type' => 'text_textarea',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'registration-vendor-field_storage'.
+  $fields['registration-vendor-field_storage'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_storage',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'vendor',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Will you require space for storage of stock? (Note: We have limited space available.)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 19,
+        ),
+      ),
+      'entity_type' => 'registration',
+      'field_name' => 'field_storage',
+      'label' => 'Storage',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_onoff',
+        'weight' => '20',
       ),
     ),
   );
@@ -2418,7 +2743,7 @@ function smash_vendors_base_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -2492,7 +2817,7 @@ function smash_vendors_base_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '12',
+        'weight' => '14',
       ),
     ),
   );
@@ -2557,7 +2882,7 @@ function smash_vendors_base_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '10',
+        'weight' => '12',
       ),
     ),
   );
@@ -2634,7 +2959,7 @@ function smash_vendors_base_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -2647,18 +2972,21 @@ function smash_vendors_base_field_default_fields() {
   t('Additional Notes');
   t('Additional Passes');
   t('Additional passes are $29 each, for a max of 4 additional passes.');
-  t('All exhibitors will be provided at least three exhibitor passes; to the best of your knowledge please indicate the names of those staff attending.');
+  t('All exhibitors will be provided at least three exhibitor passes; to the best of your knowledge please indicate the full names of those staff attending.');
   t('Anything else you want to ask or tell us about?');
   t('Approximately how much exhibition space would you require?');
   t('Artist Blurb');
-  t('Artist Name');
+  t('Artist Full Name');
   t('Body');
+  t('Booths');
   t('Business/Entity Name');
+  t('Certificate of Currency');
   t('Community Group Description');
   t('Community Group Name');
   t('Contact Name');
   t('Contact Number');
   t('Floorspace');
+  t('Forklift');
   t('Full tables are only for artist groups or teams. Please provide the second artist\'s name.');
   t('Intended Activities');
   t('Invoice ID');
@@ -2669,9 +2997,15 @@ function smash_vendors_base_field_default_fields() {
   t('Neighbour Nomination');
   t('Other Artist Name');
   t('Passes for Attending Staff');
+  t('Please enter the number of booth spaces you require.');
+  t('Please enter your full name, this must be the same as the one that appears on your ID that must be presented to pick up your passes.');
+  t('Please upload your Certificate of Currency. If you do not have this at the moment, you <strong>must apply</strong> and submit one later.
+For more information, please see the following website <a href="http://www.workcover.nsw.gov.au/insurancepremiums/Policies/Takingoutapolicy/Pages/Certificateofcurrency.aspx">NSW Goverment WorkCover site</a> ');
   t('Postal Address');
   t('Registration');
+  t('Sponsorship');
   t('Status');
+  t('Storage');
   t('Table Name');
   t('Table Selection');
   t('Tell us about yourself and your business! (We put this on our website.)');
@@ -2687,6 +3021,9 @@ function smash_vendors_base_field_default_fields() {
   t('Website Blurb');
   t('Website URL');
   t('What sort of activities do you intend to conduct within the space? (For example, sales of your products, or promotion of services.)');
+  t('Will you require space for storage of stock? (Note: We have limited space available.)');
+  t('Will you require the use of a forklift for your goods? (Note: Forklift will incur a cost of $50 fee for usage. Please advise your courier to provide a truck if a Tailgate otherwise)');
+  t('Would you be interested in receiving information about sponsorship options?');
   t('Your business postal address.');
 
   return $fields;

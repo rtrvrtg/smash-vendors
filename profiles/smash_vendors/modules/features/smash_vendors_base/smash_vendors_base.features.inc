@@ -113,7 +113,7 @@ function smash_vendors_base_default_registration_type() {
   }');
   $items['vendor'] = entity_import('registration_type', '{
     "name" : "vendor",
-    "label" : "Vendor",
+    "label" : "Exhibitor",
     "locked" : "0",
     "weight" : "0",
     "data" : null,

@@ -11,7 +11,7 @@ function smash_vendors_base_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'uid' => '1',
+  'uid' => '0',
   'title' => 'Artist',
   'log' => '',
   'status' => '1',
@@ -25,7 +25,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '54e38ee2-599e-49ed-ae56-ed49e419266a',
-  'revision_uid' => '1',
+  'revision_uid' => '3',
   'body' => array(
     'und' => array(
       0 => array(
@@ -34,6 +34,15 @@ function smash_vendors_base_uuid_features_default_content() {
         'format' => 'full_html',
         'safe_value' => 'Are you a manga-ka, an illustrator or a designer?',
         'safe_summary' => '',
+      ),
+    ),
+  ),
+  'field_invoice_prefix' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'ART',
+        'format' => NULL,
+        'safe_value' => 'ART',
       ),
     ),
   ),
@@ -47,18 +56,9 @@ function smash_vendors_base_uuid_features_default_content() {
   'field_status' => array(
     'und' => array(
       0 => array(
-        'value' => '<div class="warning"><h2>Signups are full!</h2><p>Further signups will be added to a waiting list.</p></div>',
+        'value' => '<div class="warning"><h2>Opening Soon...</h2><p>Stay Tuned to our social channels for news on opening dates.</p></div>',
         'format' => 'full_html',
-        'safe_value' => '<div class="warning"><h2>Signups are full!</h2><p>Further signups will be added to a waiting list.</p></div>',
-      ),
-    ),
-  ),
-  'field_invoice_prefix' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'ART',
-        'format' => NULL,
-        'safe_value' => 'ART',
+        'safe_value' => '<div class="warning"><h2>Opening Soon...</h2><p>Stay Tuned to our social channels for news on opening dates.</p></div>',
       ),
     ),
   ),
@@ -117,21 +117,13 @@ function smash_vendors_base_uuid_features_default_content() {
       'callback' => 'date_iso8601',
     ),
   ),
-  'publish_on' => '0',
-  'unpublish_on' => '1376089200',
-  'scheduler' => array(
-    'published' => NULL,
-    'unpublished' => 'Saturday, August 10, 2013 - 09:00',
-    'publish_on' => '0',
-    'unpublish_on' => '1376089200',
-  ),
-  'name' => 'admin',
+  'name' => '',
   'picture' => '0',
-  'data' => 'b:0;',
+  'data' => NULL,
   'date' => '2012-09-18 00:00:01 +1000',
 );
   $nodes[] = array(
-  'uid' => '1',
+  'uid' => '0',
   'title' => 'Community Group',
   'log' => '',
   'status' => '1',
@@ -145,7 +137,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '6e99b0ec-71c3-4441-a1ea-1e761103db2a',
-  'revision_uid' => '1',
+  'revision_uid' => '3',
   'body' => array(
     'und' => array(
       0 => array(
@@ -157,6 +149,15 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_invoice_prefix' => array(
+    'und' => array(
+      0 => array(
+        'value' => 'CLB',
+        'format' => NULL,
+        'safe_value' => 'CLB',
+      ),
+    ),
+  ),
   'field_registration' => array(
     'und' => array(
       0 => array(
@@ -164,13 +165,12 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
-  'field_status' => array(),
-  'field_invoice_prefix' => array(
+  'field_status' => array(
     'und' => array(
       0 => array(
-        'value' => 'CLB',
-        'format' => NULL,
-        'safe_value' => 'CLB',
+        'value' => '<div class="warning"><h2>Opening Soon...</h2><p>Stay Tuned to our social channels for news on opening dates.</p></div>',
+        'format' => 'full_html',
+        'safe_value' => '<div class="warning"><h2>Opening Soon...</h2><p>Stay Tuned to our social channels for news on opening dates.</p></div>',
       ),
     ),
   ),
@@ -229,13 +229,13 @@ function smash_vendors_base_uuid_features_default_content() {
       'callback' => 'date_iso8601',
     ),
   ),
-  'name' => 'admin',
+  'name' => '',
   'picture' => '0',
-  'data' => 'b:0;',
+  'data' => NULL,
   'date' => '2013-02-12 22:42:28 +1100',
 );
   $nodes[] = array(
-  'uid' => '1',
+  'uid' => '0',
   'title' => 'Exhibitors',
   'log' => '',
   'status' => '1',
@@ -249,7 +249,7 @@ function smash_vendors_base_uuid_features_default_content() {
   'tnid' => '0',
   'translate' => '0',
   'uuid' => 'f4efcf59-c77e-4ff4-8fed-71c25e930549',
-  'revision_uid' => '1',
+  'revision_uid' => '3',
   'body' => array(
     'und' => array(
       0 => array(
@@ -261,14 +261,6 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
-  'field_registration' => array(
-    'und' => array(
-      0 => array(
-        'registration_type' => 'vendor',
-      ),
-    ),
-  ),
-  'field_status' => array(),
   'field_invoice_prefix' => array(
     'und' => array(
       0 => array(
@@ -278,6 +270,14 @@ function smash_vendors_base_uuid_features_default_content() {
       ),
     ),
   ),
+  'field_registration' => array(
+    'und' => array(
+      0 => array(
+        'registration_type' => 'vendor',
+      ),
+    ),
+  ),
+  'field_status' => array(),
   'rdf_mapping' => array(
     'rdftype' => array(
       0 => 'sioc:Item',
@@ -333,9 +333,9 @@ function smash_vendors_base_uuid_features_default_content() {
       'callback' => 'date_iso8601',
     ),
   ),
-  'name' => 'admin',
+  'name' => '',
   'picture' => '0',
-  'data' => 'b:0;',
+  'data' => NULL,
   'date' => '2012-09-13 01:32:12 +1000',
 );
   return $nodes;

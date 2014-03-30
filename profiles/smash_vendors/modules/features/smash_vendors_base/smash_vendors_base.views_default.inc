@@ -65,10 +65,9 @@ function smash_vendors_base_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h2>[title]</h2>
 <p>[body]</p>';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'request/application/[title]/nojs';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'application/[title]';
   $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['path_case'] = 'lower';
-  $handler->display->display_options['fields']['nothing']['alter']['link_class'] = 'use-ajax';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
@@ -236,11 +235,10 @@ function smash_vendors_base_views_default_views() {
   $handler->display->display_options['fields']['field_other_artist_name']['id'] = 'field_other_artist_name';
   $handler->display->display_options['fields']['field_other_artist_name']['table'] = 'field_data_field_other_artist_name';
   $handler->display->display_options['fields']['field_other_artist_name']['field'] = 'field_other_artist_name';
-  /* Field: Registration: Passes for Attending Staff */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_staff_names']['id'] = 'field_staff_names';
   $handler->display->display_options['fields']['field_staff_names']['table'] = 'field_data_field_staff_names';
   $handler->display->display_options['fields']['field_staff_names']['field'] = 'field_staff_names';
-  $handler->display->display_options['fields']['field_staff_names']['delta_offset'] = '0';
   /* Field: Registration: Postal Address */
   $handler->display->display_options['fields']['field_postal_address']['id'] = 'field_postal_address';
   $handler->display->display_options['fields']['field_postal_address']['table'] = 'field_data_field_postal_address';

@@ -12,16 +12,18 @@ function smash_vendors_base_default_rules_configuration() {
   $items['rules_add_invoice_to_registration'] = entity_import('rules_config', '{ "rules_add_invoice_to_registration" : {
       "LABEL" : "Add invoice to registration",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "REQUIRES" : [ "smash_invoice_linker", "registration" ],
-      "ON" : [ "registration_insert" ],
+      "ON" : { "registration_insert" : [] },
       "DO" : [ { "smash_invoice_linker_create" : { "message" : [ "registration" ] } } ]
     }
   }');
   $items['rules_new_vendor_application'] = entity_import('rules_config', '{ "rules_new_vendor_application" : {
       "LABEL" : "New Vendor Application",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "registration" ],
-      "ON" : [ "registration_insert" ],
+      "ON" : { "registration_insert" : [] },
       "DO" : [
         { "mail" : {
             "to" : "exhibitors@smash.org.au",
