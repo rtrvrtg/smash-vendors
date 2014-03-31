@@ -125,7 +125,6 @@ function smash_vendors_base_default_page_manager_pages() {
 <h3>Terms & Conditions</h3>
 <p>These are for your reference only. A copy will be sent with your invoice.</p>
 <a href="http://www.smash.org.au/public/2014SMASHTermsandConditions.pdf">Stallholder Conditions</a>',
-',
       'format' => 'full_html',
       'substitute' => 1,
     );
