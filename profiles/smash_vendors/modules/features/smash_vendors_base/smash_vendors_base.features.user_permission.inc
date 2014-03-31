@@ -31,7 +31,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: administer exhibitor_food_ registration.
   $permissions['administer exhibitor_food_ registration'] = array(
     'name' => 'administer exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -56,7 +58,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: administer own exhibitor_food_ registration.
   $permissions['administer own exhibitor_food_ registration'] = array(
     'name' => 'administer own exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -168,21 +172,29 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: create exhibitor_food_ registration.
   $permissions['create exhibitor_food_ registration'] = array(
     'name' => 'create exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
     'module' => 'registration',
   );
 
   // Exported permission: create exhibitor_food_ registration other anonymous.
   $permissions['create exhibitor_food_ registration other anonymous'] = array(
     'name' => 'create exhibitor_food_ registration other anonymous',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
     'module' => 'registration',
   );
 
   // Exported permission: create exhibitor_food_ registration other users.
   $permissions['create exhibitor_food_ registration other users'] = array(
     'name' => 'create exhibitor_food_ registration other users',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'authenticated user',
+    ),
     'module' => 'registration',
   );
 
@@ -248,7 +260,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: delete any exhibitor_food_ registration.
   $permissions['delete any exhibitor_food_ registration'] = array(
     'name' => 'delete any exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -291,7 +305,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: delete own exhibitor_food_ registration.
   $permissions['delete own exhibitor_food_ registration'] = array(
     'name' => 'delete own exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -343,7 +359,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: edit exhibitor_food_ registration state.
   $permissions['edit exhibitor_food_ registration state'] = array(
     'name' => 'edit exhibitor_food_ registration state',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -359,7 +377,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: edit vendor registration state.
   $permissions['edit vendor registration state'] = array(
     'name' => 'edit vendor registration state',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -384,7 +404,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: update any exhibitor_food_ registration.
   $permissions['update any exhibitor_food_ registration'] = array(
     'name' => 'update any exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -418,7 +440,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: update own exhibitor_food_ registration.
   $permissions['update own exhibitor_food_ registration'] = array(
     'name' => 'update own exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -452,7 +476,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: view exhibitor_food_ registration.
   $permissions['view exhibitor_food_ registration'] = array(
     'name' => 'view exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
@@ -477,7 +503,9 @@ function smash_vendors_base_user_default_permissions() {
   // Exported permission: view own exhibitor_food_ registration.
   $permissions['view own exhibitor_food_ registration'] = array(
     'name' => 'view own exhibitor_food_ registration',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'registration',
   );
 
