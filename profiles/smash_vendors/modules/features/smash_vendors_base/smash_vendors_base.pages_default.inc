@@ -120,7 +120,12 @@ function smash_vendors_base_default_page_manager_pages() {
       'title' => '',
       'body' => '<h3>Exhibitor Info Pack</h3>
 <p>For exhibitors, this is a run-down of the convention and what we have to offer you.</p>
-<a href="http://www.smash.org.au/public/vendorpack2014_web-steven.pdf">Exhibitor Info Pack</a>',
+<a href="http://www.smash.org.au/public/vendorpack2014_web-steven.pdf">Exhibitor Info Pack</a>
+
+<h3>Terms & Conditions</h3>
+<p>These are for your reference only. A copy will be sent with your invoice.</p>
+<a href="http://www.smash.org.au/public/2014SMASHTermsandConditions.pdf">Stallholder Conditions</a>',
+',
       'format' => 'full_html',
       'substitute' => 1,
     );
