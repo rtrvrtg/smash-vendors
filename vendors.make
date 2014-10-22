@@ -1,8 +1,8 @@
 ; SMASH Vendors make file
-core = "7.26"
+core = "7.32"
 api = "2"
 ; comment this out in to use on drupal.org
-projects[drupal][version] = "7.26"
+projects[drupal][version] = "7.32"
 projects[drupal][patch][] = "http://drupal.org/files/entity-array_flip_warning-1102570-95.patch"
 
 ; Modules
